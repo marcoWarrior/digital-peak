@@ -1,246 +1,221 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Peak — Sunset Wave Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Peak — Growth Without Limits</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- CINEMATIC SCREEN INTRO -->
-<div id="intro-screen">
-  <div class="intro-video-container">
-    <video autoplay muted playsinline loop id="introVideo">
-      <source src="video/wave_compressed.mp4" type="video/mp4">
-    </video>
-    <div class="intro-overlay"></div>
-  </div>
-  <div class="intro-content">
-    <div class="intro-logo">DIGITAL PEAK</div>
-    <p class="intro-subtext">Cavalchiamo l'onda del mercato B2B</p>
-    <button class="intro-btn" onclick="startWebsite()">Entra nell'esperienza</button>
-  </div>
+<!-- TRANSIZIONE A COLONNE -->
+<div class="transition-overlay" id="transitionOverlay">
+  <div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="slice"></div>
 </div>
 
-<div id="progress"></div>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cring"></div>
 
-<!-- NAVIGATION BAR -->
+<!-- OVERLAY SCURO PER MENU MOBILE -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- NAV -->
 <nav id="mainNav">
-  <div class="nav-logo">DIGITAL PEAK</div>
-  <ul class="nav-links">
-    <li><a onclick="navigateToSlide(0)" class="nav-lnk-item active">Home</a></li>
-    <li><a onclick="navigateToSlide(1)" class="nav-lnk-item">Chi Siamo</a></li>
-    <li><a onclick="navigateToSlide(2)" class="nav-lnk-item">Servizi</a></li>
-    <li><a onclick="navigateToSlide(3)" class="nav-lnk-item">Know-How</a></li>
-    <li><a onclick="navigateToSlide(4)" class="nav-lnk-item">Contatti</a></li>
+  <a href="#" class="nav-logo" style="text-decoration:none;">
+    <!-- LOGO VETTORIALE (Sfondo trasparente, si adatta al pantone) -->
+    <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gradCurve" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--cyan)" />
+          <stop offset="100%" stop-color="var(--violet)" />
+        </linearGradient>
+      </defs>
+      <!-- La Curva (Onda/Peak) -->
+      <path d="M 10,50 Q 50,45 80,10 T 115,50" fill="none" stroke="url(#gradCurve)" stroke-width="6" stroke-linecap="round" />
+      <!-- Le 3 Barre del Grafico -->
+      <rect x="45" y="35" width="8" height="15" rx="3" fill="var(--cyan)" />
+      <rect x="65" y="20" width="8" height="30" rx="3" fill="var(--violet)" />
+      <rect x="85" y="10" width="8" height="40" rx="3" fill="var(--navy)" class="logo-bar-dark" />
+      <!-- Il Testo -->
+      <text x="130" y="42" font-family="'Archivo Black', sans-serif" font-size="28" class="logo-text-dark">DIGITAL<tspan fill="var(--violet)">PEAK</tspan></text>
+    </svg>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a data-target="#about">Chi Siamo</a></li>
+    <li><a data-target="#services">Servizi</a></li>
+    <li><a data-target="#contact">Contatti</a></li>
+    <li><a data-target="#contact" class="nav-cta-mobile">Inizia ora</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:14px;">
-    <a onclick="navigateToSlide(4)" class="nav-cta">Inizia ora</a>
-    <button class="hamburger" id="ham" onclick="toggleD()"><span></span><span></span><span></span></button>
+
+  <div style="display:flex;align-items:center;gap:24px;">
+    <a data-target="#contact" class="nav-cta">Inizia ora</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </div>
 </nav>
 
-<!-- MOBILE DRAWER -->
-<div class="drawer" id="drawer">
-  <a class="drawer-link" onclick="navigateFromDrawer(0)">Home</a>
-  <a class="drawer-link" onclick="navigateFromDrawer(1)">Chi Siamo</a>
-  <a class="drawer-link" onclick="navigateFromDrawer(2)">Servizi</a>
-  <a class="drawer-link" onclick="navigateFromDrawer(3)">Know-How</a>
-  <a class="drawer-link" onclick="navigateFromDrawer(4)">Contatti</a>
-</div>
-
-<!-- DOTS INDICATORS -->
-<div class="nav-dots">
-  <div class="nav-dot active" onclick="navigateToSlide(0)"></div>
-  <div class="nav-dot" onclick="navigateToSlide(1)"></div>
-  <div class="nav-dot" onclick="navigateToSlide(2)"></div>
-  <div class="nav-dot" onclick="navigateToSlide(3)"></div>
-  <div class="nav-dot" onclick="navigateToSlide(4)"></div>
-</div>
-
-<!-- MASTER SLIDES HOLDER -->
-<div class="wave-slides-container">
-
-  <!-- SLIDE 0: HOME WITH PERMANENT VIDEO BACKGROUND -->
-  <section class="wave-slide active" id="slide-0">
-    <div class="video-bg-container">
-      <video muted loop playsinline id="bgVideo">
-        <source src="video/wave_compressed.mp4" type="video/mp4">
-      </video>
-      <div class="video-overlay-darken"></div>
-    </div>
-    
-    <div class="hero-noise"></div>
-    <div class="hero-glow-1"></div>
-    <div class="hero-bg-word">PEAK</div>
-    
-    <div class="hero-layout">
-      <div>
-        <h1 class="hero-title">Rilassati.<br>L'onda la cavalchiamo <span class="accent">noi</span>.</h1>
-        <p class="hero-sub">Generiamo flussi costanti di opportunità commerciali B2B combinando ingegneria dei dati avanzata ed esecuzione strategica sul picco del mercato.</p>
-      </div>
-      <div class="hero-visual">
-        <div class="hv-card hv-card-1">
-          <div class="hvc-label">Lead Rate Increase</div>
-          <div class="hvc-value">+142%</div>
-        </div>
-        <div class="hv-card hv-card-2">
-          <div class="hvc-label">B2B Matching Precision</div>
-          <div class="hvc-value">98.4%</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 1: CHI SIAMO -->
-  <section class="wave-slide" id="slide-1">
-    <div class="about-layout">
-      <div class="about-l">
-        <h2 class="big-title">Cavalchiamo il mercato con <span class="vi">dati reali</span>.</h2>
-        <div class="tag-row">
-          <span class="t-tag">Data-Driven</span>
-          <span class="t-tag">B2B Strategy</span>
-          <span class="t-tag">Agentic AI</span>
-        </div>
-        <p class="body-text">Abbandoniamo le vecchie metriche di vanità. Sviluppiamo architetture tecnologiche dedicate per intercettare i tuoi decision-maker aziendali esattamente nel momento del bisogno primario.</p>
-      </div>
-      <div class="pillar-list">
-        <div class="pillar-row">
-          <div class="p-num">01</div>
-          <div>
-            <h3 class="p-title">Studio Preliminare</h3>
-            <p class="p-text">Identifichiamo e isoliamo i cluster di acquisto ad alta resa prima della concorrenza.</p>
-          </div>
-        </div>
-        <div class="pillar-row">
-          <div class="p-num">02</div>
-          <div>
-            <h3 class="p-title">Integrazione Totale</h3>
-            <p class="p-text">Allineiamo i sistemi CRM esistenti per eliminare qualsiasi attrito operativo interno.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 2: SERVIZI -->
-  <section class="wave-slide" id="slide-2">
-    <h2 class="big-title">Soluzioni <span class="vi">Ingegnerizzate</span></h2>
-    <div class="svc-list">
-      <div class="svc-row">
-        <div class="p-num">01</div>
-        <div>
-          <h3 class="svc-name">Lead Generation B2B</h3>
-          <div class="svc-sub"><span>Pipeline Predittive</span><span>Account-Based Marketing</span></div>
-        </div>
-      </div>
-      <div class="svc-row">
-        <div class="p-num">02</div>
-        <div>
-          <h3 class="svc-name">Sales Automation</h3>
-          <div class="svc-sub"><span>CRM Architecture</span><span>AI Qualification Agents</span></div>
-        </div>
-      </div>
-      <div class="svc-row">
-        <div class="p-num">03</div>
-        <div>
-          <h3 class="svc-name">Intelligence di Mercato</h3>
-          <div class="svc-sub"><span>Competitor Data Mining</span><span>Intent Data Tracker</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 3: KNOW-HOW -->
-  <section class="wave-slide" id="slide-3">
-    <div class="about-layout">
-      <div class="about-l">
-        <h2 class="big-title">Metodologia<br><span class="vi">Proprietaria</span>.</h2>
-        <p class="body-text">Uniamo logiche matematiche rigorose a processi creativi non convenzionali per dominare la parte alta della piramide competitiva.</p>
-      </div>
-      <div style="padding-left: 20px;">
-        <h3 class="p-title" style="margin-bottom:20px;">In cosa crediamo</h3>
-        <p class="p-text" style="margin-bottom:16px;">➔ I dati isolati sono inutili se privi di un'infrastruttura di conversione automatizzata a valle.</p>
-        <p class="p-text" style="margin-bottom:16px;">➔ Le campagne di massa sono morte; l'iper-personalizzazione dinamica è l'unica chiave d'accesso rimasta per i profili C-Level.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 4: CONTATTI -->
-  <section class="wave-slide" id="slide-4">
-    <div class="ct-layout">
-      <div class="ct-l">
-        <h2 class="big-title">Pronto a salire <span class="vi">a bordo?</span></h2>
-        <p class="body-text">Compila il modulo per attivare una sessione di audit strategica preliminare con un nostro Growth Specialist.</p>
-      </div>
-      <div>
-        <form id="ctForm" novalidate>
-          <div class="f-group">
-            <label class="f-label" for="fn">Nome e Cognome *</label>
-            <input type="text" id="fn" class="f-input" placeholder="Inserisci il tuo nome completo">
-            <div class="f-err" id="en">Inserisci nome e cognome completi (min. 4 caratteri)</div>
-          </div>
-          <div class="f-group">
-            <label class="f-label" for="fe">Email Aziendale *</label>
-            <input type="email" id="fe" class="f-input" placeholder="nome@azienda.com">
-            <div class="f-err" id="ee">Usa un'email aziendale valida</div>
-          </div>
-          <div class="f-group">
-            <label class="f-label" for="fp">Telefono *</label>
-            <input type="tel" id="fp" class="f-input" placeholder="+39 333 1234567">
-            <div class="f-err" id="ep">Numero di telefono non valido (min. 8 cifre)</div>
-          </div>
-          <div class="f-group">
-            <label class="f-label" for="fm">Messaggio *</label>
-            <textarea id="fm" class="f-input" placeholder="Parlaci dei tuoi obiettivi B2B..." style="resize:none; height:90px;"></textarea>
-            <div class="f-err" id="em">Il messaggio deve contenere almeno 20 caratteri</div>
-          </div>
-          <div class="priv-row">
-            <input type="checkbox" id="fpr">
-            <label for="fpr">Accetto la <a href="#">Privacy Policy</a> e dichiaro di essere un profilo aziendale.</label>
-          </div>
-          <div class="f-err" id="epr" style="margin-bottom:15px;">È necessario accettare la privacy policy per continuare</div>
-          <button type="submit" class="btn-send">Invia Richiesta</button>
-        </form>
-        <div id="form-ok">
-          <h3>Richiesta Inviata!</h3>
-          <p>Grazie per aver contattato Digital Peak. Un nostro specialista analizzerà i dati inviati e si metterà in contatto entro 24 ore.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- WAVE CURTAIN TRANSITION OVERLAY -->
-<div class="wave-transition-overlay" id="waveCurtain">
-  <div class="wave-layer layer-back">
-    <svg viewBox="0 0 300 100" preserveAspectRatio="none">
-      <path fill="#241233" d="M 100 0 C 70 15, 30 45, 80 70 C 105 85, 45 100, 100 100 L 200 100 C 145 100, 205 85, 180 70 C 130 45, 170 15, 200 0 Z"/>
-    </svg>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-word">PEAK</div>
+  <div class="hero-left">
+    <div class="hero-index rv-base rv-up" style="transition-delay: 0.8s;">001 — L'onda perfetta</div>
+    <h1 class="hero-title rv-base rv-up" style="transition-delay: 0.9s;">Cavalca l'onda del<br><span class="accent">cambiamento</span></h1>
   </div>
-  <div class="wave-layer layer-mid">
-    <svg viewBox="0 0 300 100" preserveAspectRatio="none">
-      <path fill="#5c134f" d="M 100 0 C 30 25, 60 60, 45 80 C 35 90, 65 100, 100 100 L 200 100 C 165 100, 135 90, 145 80 C 160 60, 130 25, 200 0 Z"/>
-    </svg>
+  <div class="hero-right">
+    <p class="hero-sub rv-base rv-up" style="transition-delay: 1.0s;">Strategia, tecnologia e azione per aziende che vogliono dominare il mercato e scalare senza rallentare.</p>
   </div>
-  <div class="wave-layer layer-front">
-    <svg viewBox="0 0 300 100" preserveAspectRatio="none">
+</section>
+
+<!-- CHI SIAMO & METODO -->
+<section class="section section-dark" id="about">
+  <div class="section-eye"><span class="eye-num">002</span> Chi Siamo</div>
+
+  <div class="rv-base rv-up">
+    <h2 class="big-title">Da oltre 15 anni lavoriamo nel <span class="cy">B2B</span></h2>
+    <p class="body-text">Siamo specialisti nell'analisi della parte bassa del funnel. Non ci interessano i numeri che fanno solo scena: creiamo valore concentrandoci in modo ossessivo sulle azioni che impattano realmente il tuo business in termini di conversione e lead generation.</p>
+  </div>
+
+  <div class="method-grid rv-trigger">
+    <div class="method-col rv-child" style="transition-delay: 0.1s;">
+      <h3 class="method-title">Studio</h3>
+      <p class="method-text">Leggiamo le correnti prima di entrare in acqua. Analizziamo il mercato, identifichiamo i cluster di acquisto ad alta resa e definiamo un posizionamento inattaccabile.</p>
+    </div>
+    <div class="method-col rv-child" style="transition-delay: 0.3s;">
+      <h3 class="method-title">Preparazione</h3>
+      <p class="method-text">Costruiamo l'infrastruttura tecnologica. Integriamo CRM, marketing automation e sistemi di tracciamento affinché nessun dato e nessuna opportunità vengano dispersi.</p>
+    </div>
+    <div class="method-col rv-child" style="transition-delay: 0.5s;">
+      <h3 class="method-title">Azione</h3>
+      <p class="method-text">Cavalchiamo l'onda. Attiviamo strategie di acquisizione mirate e ottimizziamo i tassi di conversione in modo continuo, con un focus ossessivo sull'esecuzione.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI OGILVY STYLE -->
+<section id="services" style="background: var(--navy);">
+
+  <!-- Servizio 1: Lead Generation -->
+  <div class="og-service rv-base rv-up">
+    <div class="og-bg parallax-container">
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1600" alt="Lead Generation" class="parallax-img">
+    </div>
+    <div class="og-content">
+      <h2 class="og-title">LEAD <br><span class="og-title-outline">GENERATION</span></h2>
+      <div class="og-desc-box">
+        <h3 class="og-desc-title">Acquisizione B2B</h3>
+        <p class="og-desc-text">Costruiamo sistemi prevedibili che ti portano contatti qualificati. Intercettiamo chi ha già bisogno del tuo prodotto e risvegliamo l'interesse di chi non ti conosce, azzerando la dispersione di budget.</p>
+        <a href="lead-generation.html" class="og-link">Scopri il servizio <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servizio 2: eCommerce -->
+  <div class="og-service rv-base rv-up">
+    <div class="og-bg parallax-container">
+      <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1600" alt="eCommerce B2B" class="parallax-img">
+    </div>
+    <div class="og-content" style="align-items: flex-end; text-align: right;">
+      <h2 class="og-title"><span class="og-title-outline">ECOMMERCE</span><br>& CRO</h2>
+      <div class="og-desc-box" style="text-align: left; border-left: none; border-right: 4px solid var(--cyan);">
+        <h3 class="og-desc-title">Ottimizzazione Conversioni</h3>
+        <p class="og-desc-text">Miglioramento netto della conversione nel mondo eCommerce. Rimuoviamo ogni ostacolo all'acquisto, ottimizzando l'esperienza dell'utente per massimizzare il volume delle transazioni.</p>
+        <a href="ecommerce-cro.html" class="og-link">Scopri il servizio <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servizio 3: CRM Automation -->
+  <div class="og-service rv-base rv-up">
+    <div class="og-bg parallax-container">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600" alt="CRM Automazione" class="parallax-img">
+    </div>
+    <div class="og-content">
+      <h2 class="og-title">CRM &<br><span class="og-title-outline">AUTOMATION</span></h2>
+      <div class="og-desc-box">
+        <h3 class="og-desc-title">Integrazione di Sistema</h3>
+        <p class="og-desc-text">Sincronizziamo in modo perfetto i reparti marketing e vendite. Sviluppiamo workflow che qualificano e nutrono i contatti in automatico, accompagnandoli verso la firma del contratto.</p>
+        <a href="crm-automation.html" class="og-link">Scopri il servizio <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servizio 4: Strategia -->
+  <div class="og-service rv-base rv-up">
+    <div class="og-bg parallax-container">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600" alt="Strategia Marketing" class="parallax-img">
+    </div>
+    <div class="og-content" style="align-items: flex-end; text-align: right;">
+      <h2 class="og-title"><span class="og-title-outline">STRATEGIA</span><br>DIGITALE</h2>
+      <div class="og-desc-box" style="text-align: left; border-left: none; border-right: 4px solid var(--violet);">
+        <h3 class="og-desc-title">Consulenza Direzionale</h3>
+        <p class="og-desc-text">Consulenza avanzata sulla strategia di marketing aziendale. Definiamo le metriche da scalare e l'architettura dei canali per assicurarti una crescita stabile e prevedibile nel tempo.</p>
+        <a href="strategia-marketing.html" class="og-link">Scopri il servizio <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CONTACT FORM AGGIORNATO -->
+<section class="section section-dark" id="contact">
+  <div class="section-eye"><span class="eye-num">004</span> Contatti</div>
+
+  <div class="ct-layout">
+    <div class="rv-base rv-up">
+      <h2 class="big-title">Dove vuoi migliorare il tuo <span class="cy">business?</span></h2>
+      <p class="body-text">Non usiamo script preimpostati. Inviaci la tua richiesta: analizzeremo i tuoi dati e fisseremo una chiacchierata esplorativa, senza impegno, per capire come scalare i tuoi risultati.</p>
+    </div>
+
+    <div class="rv-base rv-up" style="transition-delay: 0.2s;">
+      <form id="contactForm" style="background: rgba(255,255,255,0.02); padding: 40px; border-radius: 8px; border: 1px solid var(--line-light);">
+        <div class="f-group">
+          <label class="f-label">Nome e Cognome</label>
+          <input type="text" class="f-input" placeholder="Mario Rossi" required>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Mail Aziendale</label>
+          <input type="email" class="f-input" placeholder="mario@tuaazienda.it" required>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Telefono</label>
+          <input type="tel" class="f-input" placeholder="+39 000 000 0000">
+        </div>
+        <div class="f-group">
+          <label class="f-label">Raccontaci la tua sfida (Campo Libero)</label>
+          <textarea class="f-input" placeholder="Di cosa hai bisogno o cosa vuoi migliorare?" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Invia Richiesta →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: var(--navy-2); padding: 60px; border-top: 1px solid var(--line-light);">
+  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto;">
+
+    <svg viewBox="0 0 280 60" style="height: 35px; width: auto;" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#f59e0b" />
-          <stop offset="50%" stop-color="#e14d65" />
-          <stop offset="100%" stop-color="#13091d" />
+        <linearGradient id="gradCurveFt" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--cyan)" />
+          <stop offset="100%" stop-color="var(--violet)" />
         </linearGradient>
       </defs>
-      <path fill="url(#waveGrad)" d="M 100 0 C 50 20, 40 50, 70 75 C 90 90, 50 100, 100 100 L 200 100 C 150 100, 190 90, 170 75 C 140 50, 150 20, 200 0 Z"/>
+      <path d="M 10,50 Q 50,45 80,10 T 115,50" fill="none" stroke="url(#gradCurveFt)" stroke-width="6" stroke-linecap="round" />
+      <rect x="45" y="35" width="8" height="15" rx="3" fill="var(--cyan)" />
+      <rect x="65" y="20" width="8" height="30" rx="3" fill="var(--violet)" />
+      <rect x="85" y="10" width="8" height="40" rx="3" fill="var(--bg-color)" />
+      <text x="130" y="42" font-family="'Archivo Black', sans-serif" font-size="28" fill="var(--bg-color)">DIGITAL<tspan fill="var(--violet)">PEAK</tspan></text>
     </svg>
+
+    <div style="color: var(--gray-2); font-size: 13px;">© 2026 Digital Peak. Growth Without Limits.</div>
   </div>
-</div>
+</footer>
 
 <script src="script.js"></script>
 </body>
