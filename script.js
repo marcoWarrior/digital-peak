@@ -1,185 +1,118 @@
-// --- FUNZIONE DI ATTIVAZIONE DEL SITO (FADE OUT INTRO) ---
-function startWebsite() {
-  const intro = document.getElementById('intro-screen');
-  if (intro && !intro.classList.contains('fade-out')) {
-    intro.classList.add('fade-out');
-    
-    // Forza la riproduzione continua del video di sfondo sulla Home Slide
-    const bgVideo = document.getElementById('bgVideo');
-    if (bgVideo) {
-      bgVideo.play().catch(e => console.log("Riproduzione background avviata."));
-    }
-  }
-}
-
-// Assicurazione di sblocco forzato del pulsante di ingresso
-window.addEventListener('DOMContentLoaded', () => {
-  const introVid = document.getElementById('introVideo');
-  if (introVid) {
-    introVid.play().catch(() => {
-      console.log("Autoplay iniziale mutato avviato correttamente dal browser.");
-    });
-  }
+// ─── TRANSIZIONE A COLONNE ───
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('transitionOverlay').classList.add('is-loaded'); }, 300);
 });
 
-// --- LOGICA DI NAVIGAZIONE ORIZZONTALE TRA LE SLIDE ---
-let currentSlide = 0;
-const slides = document.querySelectorAll('.wave-slide');
-const totalSlides = slides.length;
-let isAnimating = false;
+// ─── HAMBURGER MENU ───
+const navToggle = document.getElementById('navToggle');
+const navLinksEl = document.getElementById('navLinks');
+const navOverlayEl = document.getElementById('navOverlay');
 
-const dots = document.querySelectorAll('.nav-dot');
-const navLinks = document.querySelectorAll('.nav-lnk-item');
-const progBar = document.getElementById('progress');
-
-function goToSlide(targetIndex) {
-  if (targetIndex < 0 || targetIndex >= totalSlides || isAnimating || targetIndex === currentSlide) return;
-  isAnimating = true;
-
-  const curtain = document.getElementById('waveCurtain');
-  curtain.style.display = 'block';
-  curtain.classList.add('sweeping');
-
-  setTimeout(() => {
-    slides[currentSlide].classList.remove('active');
-    slides[targetIndex].classList.add('active');
-
-    dots.forEach((d, i) => d.classList.toggle('active', i === targetIndex));
-    navLinks.forEach((l, i) => l.classList.toggle('active', i === targetIndex));
-    
-    progBar.style.width = ((targetIndex) / (totalSlides - 1)) * 100 + '%';
-
-    currentSlide = targetIndex;
-  }, 600);
-
-  setTimeout(() => {
-    curtain.classList.remove('sweeping');
-    curtain.style.display = 'none';
-    isAnimating = false;
-  }, 1400);
+function isMenuOpen() {
+  return navLinksEl.classList.contains('open');
 }
 
-function navigateToSlide(idx) {
-  goToSlide(idx);
+function openMenu() {
+  navToggle.classList.add('open');
+  navLinksEl.classList.add('open');
+  navOverlayEl.classList.add('open');
+  navToggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden'; // blocca lo scroll dietro al menu
 }
 
-// --- INTERCETTAZIONE EVENTI SCROLL / SWIPE ---
-window.addEventListener('wheel', (e) => {
-  if (isAnimating) return;
-  // Impedisce lo scroll se l'intro è ancora attiva
-  const intro = document.getElementById('intro-screen');
-  if (intro && !intro.classList.contains('fade-out')) return;
-
-  if (Math.abs(e.deltaY) > 35 || Math.abs(e.deltaX) > 35) {
-    if (e.deltaY > 0 || e.deltaX > 0) {
-      goToSlide(currentSlide + 1);
-    } else {
-      goToSlide(currentSlide - 1);
-    }
-  }
-}, { passive: true });
-
-let touchX = 0;
-let touchY = 0;
-window.addEventListener('touchstart', (e) => {
-  touchX = e.changedTouches[0].screenX;
-  touchY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-window.addEventListener('touchend', (e) => {
-  if (isAnimating) return;
-  const intro = document.getElementById('intro-screen');
-  if (intro && !intro.classList.contains('fade-out')) return;
-
-  const endX = e.changedTouches[0].screenX;
-  const endY = e.changedTouches[0].screenY;
-  const diffX = touchX - endX;
-  const diffY = touchY - endY;
-
-  if (Math.abs(diffX) > 50 || Math.abs(diffY) > 50) {
-    if (Math.abs(diffX) > Math.abs(diffY)) {
-      if (diffX > 0) goToSlide(currentSlide + 1);
-      else goToSlide(currentSlide - 1);
-    } else {
-      if (diffY > 0) goToSlide(currentSlide + 1);
-      else goToSlide(currentSlide - 1);
-    }
-  }
-}, { passive: true });
-
-// --- HAMBURGER MENU DRAWER MANAGEMENT ---
-function toggleD() {
-  document.getElementById('drawer').classList.toggle('open');
-  document.getElementById('ham').classList.toggle('open');
-}
-function closeD() {
-  document.getElementById('drawer').classList.remove('open');
-  document.getElementById('ham').classList.remove('open');
-}
-function navigateFromDrawer(idx) {
-  closeD();
-  setTimeout(() => { goToSlide(idx); }, 300);
+function closeMenu() {
+  navToggle.classList.remove('open');
+  navLinksEl.classList.remove('open');
+  navOverlayEl.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
 }
 
-// --- CURSORE INTERATTIVO ---
-const cursor = document.getElementById('cursor');
-const cring = document.getElementById('cring');
-window.addEventListener('mousemove', (e) => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-  cring.style.left = e.clientX + 'px';
-  cring.style.top = e.clientY + 'px';
+function toggleMenu() {
+  isMenuOpen() ? closeMenu() : openMenu();
+}
+
+if (navToggle) {
+  navToggle.addEventListener('click', toggleMenu);
+}
+if (navOverlayEl) {
+  navOverlayEl.addEventListener('click', closeMenu);
+}
+
+// Chiudi con Esc
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && isMenuOpen()) closeMenu();
 });
 
-// --- VALIDAZIONE FORM AVANZATA ---
-const pd = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'libero.it', 'icloud.com', 'live.it', 'ymail.com'];
+// Se la finestra torna a dimensioni desktop, richiudi il menu mobile
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768 && isMenuOpen()) closeMenu();
+});
 
-function sf(el, errId, isValid) {
-  if(!isValid) {
-    el.classList.add('invalid');
-    document.getElementById(errId).classList.add('on');
-  } else {
-    el.classList.remove('invalid');
-    document.getElementById(errId).classList.remove('on');
-  }
-}
+// ─── NAVIGAZIONE INTERNA (funziona identica su desktop e mobile) ───
+const navLinks = document.querySelectorAll('a[data-target]');
 
-const form = document.getElementById('ctForm');
-if (form) {
-  form.addEventListener('submit', function(e) {
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = link.getAttribute('data-target');
+    if (!target) return;
     e.preventDefault();
-    let ok = true;
-    
-    const n = document.getElementById('fn');
-    const nok = n.value.trim().split(' ').length >= 2 && n.value.trim().length >= 4;
-    sf(n, 'en', nok); if(!nok) ok = false;
-    
-    const em = document.getElementById('fe');
-    const ev = em.value.trim().toLowerCase();
-    const isp = pd.some(d => ev.includes('@' + d));
-    const eok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(ev) && !isp;
-    sf(em, 'ee', eok);
-    if (!eok) {
-      document.getElementById('ee').textContent = isp ? "Usa un'email aziendale (no provider pubblici)" : "Email non valida";
-      ok = false;
-    }
-    
-    const ph = document.getElementById('fp');
-    const pok = ph.value.replace(/[\s\-\+\(\)]/g, '').length >= 8;
-    sf(ph, 'ep', pok); if(!pok) ok = false;
-    
-    const ms = document.getElementById('fm');
-    const mok = ms.value.trim().length >= 20;
-    sf(ms, 'em', mok); if(!mok) ok = false;
-    
-    const pr = document.getElementById('fpr');
-    const pe = document.getElementById('epr');
-    if(!pr.checked) { pe.classList.add('on'); ok = false; } else pe.classList.remove('on');
-    
-    if(ok) {
-      document.getElementById('ctForm').style.display = 'none';
-      document.getElementById('form-ok').style.display = 'block';
+    closeMenu();
+    const targetSection = document.querySelector(target);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+});
+
+// Cambia colore al logo testo della Nav allo scroll (Sfondo bianco -> Testo Blu Navy)
+const nav = document.getElementById('mainNav');
+const logoText = document.querySelector('.logo-text-dark');
+const logoBar = document.querySelector('.logo-bar-dark');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) {
+    nav.classList.add('scrolled');
+    if (logoText) logoText.style.fill = 'var(--navy)';
+    if (logoBar) logoBar.style.fill = 'var(--navy)';
+  } else {
+    nav.classList.remove('scrolled');
+    if (logoText) logoText.style.fill = 'var(--navy)';
+    if (logoBar) logoBar.style.fill = 'var(--navy)';
+  }
+}, { passive: true });
+
+// ─── EFFETTO PARALLAX SULLE IMMAGINI ───
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const parallaxImgs = document.querySelectorAll('.parallax-img');
+  parallaxImgs.forEach(img => {
+    const speed = 0.15; img.style.transform = `translateY(${-(scrolled * speed)}px)`;
+  });
+}, { passive: true });
+
+// ─── CURSOR ESTETICO (solo desktop) ───
+const cur = document.getElementById('cursor'), crg = document.getElementById('cring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+const isTouch = window.matchMedia('(max-width: 768px)').matches;
+
+if (!isTouch) {
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animC() {
+    rx += (mx - rx) * .2; ry += (my - ry) * .2;
+    if (cur) { cur.style.left = mx + 'px'; cur.style.top = my + 'px'; }
+    if (crg) { crg.style.left = rx + 'px'; crg.style.top = ry + 'px'; }
+    requestAnimationFrame(animC);
+  })();
+  document.querySelectorAll('a, button, .og-service').forEach(el => {
+    el.addEventListener('mouseenter', () => { if (crg) crg.style.transform = 'translate(-50%,-50%) scale(1.5)'; });
+    el.addEventListener('mouseleave', () => { if (crg) crg.style.transform = 'translate(-50%,-50%) scale(1)'; });
+  });
 }
-progBar.style.width = '0%';
+
+// ─── SCROLL REVEAL ───
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.rv-base, .rv-trigger').forEach(el => obs.observe(el));
