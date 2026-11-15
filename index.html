@@ -3,19 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Peak — Growth Without Limits</title>
+<title data-i18n="meta_title_home">Digital Peak — Growth Without Limits</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-<!-- TRANSIZIONE A COLONNE -->
-<div class="transition-overlay" id="transitionOverlay">
-  <div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="slice"></div><div class="slice"></div>
-</div>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cring"></div>
 
 <!-- OVERLAY SCURO PER MENU MOBILE -->
 <div class="nav-overlay" id="navOverlay"></div>
@@ -23,34 +15,23 @@
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="nav-logo" style="text-decoration:none;">
-    <!-- LOGO VETTORIALE (Sfondo trasparente, si adatta al pantone) -->
-    <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="gradCurve" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="var(--cyan)" />
-          <stop offset="100%" stop-color="var(--violet)" />
-        </linearGradient>
-      </defs>
-      <!-- La Curva (Onda/Peak) -->
-      <path d="M 10,50 Q 50,45 80,10 T 115,50" fill="none" stroke="url(#gradCurve)" stroke-width="6" stroke-linecap="round" />
-      <!-- Le 3 Barre del Grafico -->
-      <rect x="45" y="35" width="8" height="15" rx="3" fill="var(--cyan)" />
-      <rect x="65" y="20" width="8" height="30" rx="3" fill="var(--violet)" />
-      <rect x="85" y="10" width="8" height="40" rx="3" fill="var(--navy)" class="logo-bar-dark" />
-      <!-- Il Testo -->
-      <text x="130" y="42" font-family="'Archivo Black', sans-serif" font-size="28" class="logo-text-dark">DIGITAL<tspan fill="var(--violet)">PEAK</tspan></text>
-    </svg>
+    <img src="assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
   </a>
 
   <ul class="nav-links" id="navLinks">
-    <li><a data-target="#about">Chi Siamo</a></li>
-    <li><a data-target="#services">Servizi</a></li>
-    <li><a data-target="#contact">Contatti</a></li>
-    <li><a data-target="#contact" class="nav-cta-mobile">Inizia ora</a></li>
+    <li><a data-target="#about" data-i18n="nav_about">Chi Siamo</a></li>
+    <li><a data-target="#services" data-i18n="nav_services">Servizi</a></li>
+    <li><a data-target="#contact" data-i18n="nav_contact">Contatti</a></li>
+    <li><a data-target="#contact" class="nav-cta-mobile" data-i18n="nav_cta">Inizia ora</a></li>
   </ul>
 
   <div style="display:flex;align-items:center;gap:24px;">
-    <a data-target="#contact" class="nav-cta">Inizia ora</a>
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn active" data-lang="it">IT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+    <a data-target="#contact" class="nav-cta" data-i18n="nav_cta">Inizia ora</a>
     <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -63,35 +44,35 @@
 <section class="hero" id="home">
   <div class="hero-bg-word">PEAK</div>
   <div class="hero-left">
-    <div class="hero-index rv-base rv-up" style="transition-delay: 0.8s;">001 — L'onda perfetta</div>
-    <h1 class="hero-title rv-base rv-up" style="transition-delay: 0.9s;">Cavalca l'onda del<br><span class="accent">cambiamento</span></h1>
+    <div class="hero-index rv-base rv-up" style="transition-delay: 0.8s;" data-i18n="hero_eyebrow">001 — L'onda perfetta</div>
+    <h1 class="hero-title rv-base rv-up" style="transition-delay: 0.9s;" data-i18n="hero_title">Cavalca l'onda del<br><span class="accent">cambiamento</span></h1>
   </div>
   <div class="hero-right">
-    <p class="hero-sub rv-base rv-up" style="transition-delay: 1.0s;">Strategia, tecnologia e azione per aziende che vogliono dominare il mercato e scalare senza rallentare.</p>
+    <p class="hero-sub rv-base rv-up" style="transition-delay: 1.0s;" data-i18n="hero_sub">Strategia, tecnologia e azione per aziende che vogliono dominare il mercato e scalare senza rallentare.</p>
   </div>
 </section>
 
 <!-- CHI SIAMO & METODO -->
 <section class="section section-dark" id="about">
-  <div class="section-eye"><span class="eye-num">002</span> Chi Siamo</div>
+  <div class="section-eye" data-i18n="about_eye"><span class="eye-num">002</span> Chi Siamo</div>
 
   <div class="rv-base rv-up">
-    <h2 class="big-title">Da oltre 15 anni lavoriamo nel <span class="cy">B2B</span></h2>
-    <p class="body-text">Siamo specialisti nell'analisi della parte bassa del funnel. Non ci interessano i numeri che fanno solo scena: creiamo valore concentrandoci in modo ossessivo sulle azioni che impattano realmente il tuo business in termini di conversione e lead generation.</p>
+    <h2 class="big-title" data-i18n="about_title">Da oltre 15 anni lavoriamo nel <span class="cy">B2B</span></h2>
+    <p class="body-text" data-i18n="about_p">Siamo specialisti nell'analisi della parte bassa del funnel. Non ci interessano i numeri che fanno solo scena: creiamo valore concentrandoci in modo ossessivo sulle azioni che impattano realmente il tuo business in termini di conversione e lead generation.</p>
   </div>
 
   <div class="method-grid rv-trigger">
     <div class="method-col rv-child" style="transition-delay: 0.1s;">
-      <h3 class="method-title">Studio</h3>
-      <p class="method-text">Leggiamo le correnti prima di entrare in acqua. Analizziamo il mercato, identifichiamo i cluster di acquisto ad alta resa e definiamo un posizionamento inattaccabile.</p>
+      <h3 class="method-title" data-i18n="method_1_title">Studio</h3>
+      <p class="method-text" data-i18n="method_1_text">Leggiamo le correnti prima di entrare in acqua. Analizziamo il mercato, identifichiamo i cluster di acquisto ad alta resa e definiamo un posizionamento inattaccabile.</p>
     </div>
     <div class="method-col rv-child" style="transition-delay: 0.3s;">
-      <h3 class="method-title">Preparazione</h3>
-      <p class="method-text">Costruiamo l'infrastruttura tecnologica. Integriamo CRM, marketing automation e sistemi di tracciamento affinché nessun dato e nessuna opportunità vengano dispersi.</p>
+      <h3 class="method-title" data-i18n="method_2_title">Preparazione</h3>
+      <p class="method-text" data-i18n="method_2_text">Costruiamo l'infrastruttura tecnologica. Integriamo CRM, marketing automation e sistemi di tracciamento affinché nessun dato e nessuna opportunità vengano dispersi.</p>
     </div>
     <div class="method-col rv-child" style="transition-delay: 0.5s;">
-      <h3 class="method-title">Azione</h3>
-      <p class="method-text">Cavalchiamo l'onda. Attiviamo strategie di acquisizione mirate e ottimizziamo i tassi di conversione in modo continuo, con un focus ossessivo sull'esecuzione.</p>
+      <h3 class="method-title" data-i18n="method_3_title">Azione</h3>
+      <p class="method-text" data-i18n="method_3_text">Cavalchiamo l'onda. Attiviamo strategie di acquisizione mirate e ottimizziamo i tassi di conversione in modo continuo, con un focus ossessivo sull'esecuzione.</p>
     </div>
   </div>
 </section>
@@ -99,97 +80,128 @@
 <!-- SERVIZI OGILVY STYLE -->
 <section id="services" style="background: var(--navy);">
 
-  <!-- Servizio 1: Lead Generation -->
+  <!-- 1: Lead Generation -->
   <div class="og-service rv-base rv-up">
     <div class="og-bg parallax-container">
       <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1600" alt="Lead Generation" class="parallax-img">
     </div>
     <div class="og-content">
-      <h2 class="og-title">LEAD <br><span class="og-title-outline">GENERATION</span></h2>
+      <h2 class="og-title" data-i18n="s1_heading">LEAD <br><span class="og-title-outline">GENERATION</span></h2>
       <div class="og-desc-box">
-        <h3 class="og-desc-title">Acquisizione B2B</h3>
-        <p class="og-desc-text">Costruiamo sistemi prevedibili che ti portano contatti qualificati. Intercettiamo chi ha già bisogno del tuo prodotto e risvegliamo l'interesse di chi non ti conosce, azzerando la dispersione di budget.</p>
-        <a href="lead-generation.html" class="og-link">Scopri il servizio <span>→</span></a>
+        <h3 class="og-desc-title" data-i18n="s1_title">Acquisizione B2B</h3>
+        <p class="og-desc-text" data-i18n="s1_desc">Costruiamo sistemi prevedibili che ti portano contatti qualificati. Intercettiamo chi ha già bisogno del tuo prodotto e risvegliamo l'interesse di chi non ti conosce, azzerando la dispersione di budget.</p>
+        <a href="pages/lead-generation.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
       </div>
     </div>
   </div>
 
-  <!-- Servizio 2: eCommerce -->
+  <!-- 2: eCommerce B2B -->
   <div class="og-service rv-base rv-up">
     <div class="og-bg parallax-container">
       <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1600" alt="eCommerce B2B" class="parallax-img">
     </div>
     <div class="og-content" style="align-items: flex-end; text-align: right;">
-      <h2 class="og-title"><span class="og-title-outline">ECOMMERCE</span><br>& CRO</h2>
+      <h2 class="og-title" data-i18n="s2_heading"><span class="og-title-outline">ECOMMERCE</span><br>B2B</h2>
       <div class="og-desc-box" style="text-align: left; border-left: none; border-right: 4px solid var(--cyan);">
-        <h3 class="og-desc-title">Ottimizzazione Conversioni</h3>
-        <p class="og-desc-text">Miglioramento netto della conversione nel mondo eCommerce. Rimuoviamo ogni ostacolo all'acquisto, ottimizzando l'esperienza dell'utente per massimizzare il volume delle transazioni.</p>
-        <a href="ecommerce-cro.html" class="og-link">Scopri il servizio <span>→</span></a>
+        <h3 class="og-desc-title" data-i18n="s2_title">Ottimizzazione Conversioni</h3>
+        <p class="og-desc-text" data-i18n="s2_desc">Miglioramento netto della conversione nel mondo eCommerce. Rimuoviamo ogni ostacolo all'acquisto, ottimizzando l'esperienza dell'utente per massimizzare il volume delle transazioni.</p>
+        <a href="pages/ecommerce-cro.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
       </div>
     </div>
   </div>
 
-  <!-- Servizio 3: CRM Automation -->
+  <!-- 3: Agentic AI -->
   <div class="og-service rv-base rv-up">
     <div class="og-bg parallax-container">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600" alt="CRM Automazione" class="parallax-img">
+      <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1600" alt="Agentic AI" class="parallax-img">
     </div>
     <div class="og-content">
-      <h2 class="og-title">CRM &<br><span class="og-title-outline">AUTOMATION</span></h2>
+      <h2 class="og-title" data-i18n="s3_heading">AGENTIC <br><span class="og-title-outline">AI</span></h2>
       <div class="og-desc-box">
-        <h3 class="og-desc-title">Integrazione di Sistema</h3>
-        <p class="og-desc-text">Sincronizziamo in modo perfetto i reparti marketing e vendite. Sviluppiamo workflow che qualificano e nutrono i contatti in automatico, accompagnandoli verso la firma del contratto.</p>
-        <a href="crm-automation.html" class="og-link">Scopri il servizio <span>→</span></a>
+        <h3 class="og-desc-title" data-i18n="s3_title">Agenti su Misura</h3>
+        <p class="og-desc-text" data-i18n="s3_desc">La soluzione AI giusta per il tuo business: analizziamo i processi, individuiamo dove l'AI genera impatto e costruiamo agenti su misura, senza soluzioni preconfezionate.</p>
+        <a href="pages/agentic-ai.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
       </div>
     </div>
   </div>
 
-  <!-- Servizio 4: Strategia -->
+  <!-- 4: Marketing Automation -->
   <div class="og-service rv-base rv-up">
     <div class="og-bg parallax-container">
-      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600" alt="Strategia Marketing" class="parallax-img">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600" alt="Marketing Automation" class="parallax-img">
     </div>
     <div class="og-content" style="align-items: flex-end; text-align: right;">
-      <h2 class="og-title"><span class="og-title-outline">STRATEGIA</span><br>DIGITALE</h2>
+      <h2 class="og-title" data-i18n="s4_heading"><span class="og-title-outline">MARKETING</span><br>AUTOMATION</h2>
       <div class="og-desc-box" style="text-align: left; border-left: none; border-right: 4px solid var(--violet);">
-        <h3 class="og-desc-title">Consulenza Direzionale</h3>
-        <p class="og-desc-text">Consulenza avanzata sulla strategia di marketing aziendale. Definiamo le metriche da scalare e l'architettura dei canali per assicurarti una crescita stabile e prevedibile nel tempo.</p>
-        <a href="strategia-marketing.html" class="og-link">Scopri il servizio <span>→</span></a>
+        <h3 class="og-desc-title" data-i18n="s4_title">Integrazione di Sistema</h3>
+        <p class="og-desc-text" data-i18n="s4_desc">Eliminiamo i silos tra social, ads, web, database e CRM. Le stesse automazioni che accelerano la lead generation B2B scalano anche nell'eCommerce: una sola infrastruttura, molti contesti.</p>
+        <a href="pages/marketing-automation.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5: Marketing Strategy -->
+  <div class="og-service rv-base rv-up">
+    <div class="og-bg parallax-container">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600" alt="Marketing Strategy" class="parallax-img">
+    </div>
+    <div class="og-content">
+      <h2 class="og-title" data-i18n="s5_heading">MARKETING <br><span class="og-title-outline">STRATEGY</span></h2>
+      <div class="og-desc-box">
+        <h3 class="og-desc-title" data-i18n="s5_title">Consulenza Direzionale</h3>
+        <p class="og-desc-text" data-i18n="s5_desc">La strategia digitale che unisce tutti i canali e le automazioni in un sistema di crescita coerente e misurabile. Definiamo le metriche da scalare e l'architettura dei canali.</p>
+        <a href="pages/strategia-marketing.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6: Siti & App Web -->
+  <div class="og-service rv-base rv-up">
+    <div class="og-bg parallax-container">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1600" alt="Siti & App Web" class="parallax-img">
+    </div>
+    <div class="og-content" style="align-items: flex-end; text-align: right;">
+      <h2 class="og-title" data-i18n="s6_heading"><span class="og-title-outline">SITI</span><br>& APP WEB</h2>
+      <div class="og-desc-box" style="text-align: left; border-left: none; border-right: 4px solid var(--cyan);">
+        <h3 class="og-desc-title" data-i18n="s6_title">Web Design & Sviluppo</h3>
+        <p class="og-desc-text" data-i18n="s6_desc">Siti B2B ad alta conversione e web application su misura, con integrazione CRM nativa. Design premium, performance ottimale e collegamento nativo con il tuo stack tecnologico.</p>
+        <a href="pages/siti-web.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
       </div>
     </div>
   </div>
 
 </section>
 
-<!-- CONTACT FORM AGGIORNATO -->
+<!-- CONTACT FORM -->
 <section class="section section-dark" id="contact">
-  <div class="section-eye"><span class="eye-num">004</span> Contatti</div>
+  <div class="section-eye" data-i18n="contact_eye"><span class="eye-num">004</span> Contatti</div>
 
   <div class="ct-layout">
     <div class="rv-base rv-up">
-      <h2 class="big-title">Dove vuoi migliorare il tuo <span class="cy">business?</span></h2>
-      <p class="body-text">Non usiamo script preimpostati. Inviaci la tua richiesta: analizzeremo i tuoi dati e fisseremo una chiacchierata esplorativa, senza impegno, per capire come scalare i tuoi risultati.</p>
+      <h2 class="big-title" data-i18n="contact_title">Dove vuoi migliorare il tuo <span class="cy">business?</span></h2>
+      <p class="body-text" data-i18n="contact_sub">Non usiamo script preimpostati. Inviaci la tua richiesta: analizzeremo i tuoi dati e fisseremo una chiacchierata esplorativa, senza impegno, per capire come scalare i tuoi risultati.</p>
     </div>
 
     <div class="rv-base rv-up" style="transition-delay: 0.2s;">
       <form id="contactForm" style="background: rgba(255,255,255,0.02); padding: 40px; border-radius: 8px; border: 1px solid var(--line-light);">
         <div class="f-group">
-          <label class="f-label">Nome e Cognome</label>
-          <input type="text" class="f-input" placeholder="Mario Rossi" required>
+          <label class="f-label" data-i18n="form_name">Nome e Cognome</label>
+          <input type="text" class="f-input" name="name" placeholder="Mario Rossi" required>
         </div>
         <div class="f-group">
-          <label class="f-label">Mail Aziendale</label>
-          <input type="email" class="f-input" placeholder="mario@tuaazienda.it" required>
+          <label class="f-label" data-i18n="form_email">Mail Aziendale</label>
+          <input type="email" class="f-input" name="email" placeholder="mario@tuaazienda.it" required>
         </div>
         <div class="f-group">
-          <label class="f-label">Telefono</label>
-          <input type="tel" class="f-input" placeholder="+39 000 000 0000">
+          <label class="f-label" data-i18n="form_phone">Telefono</label>
+          <input type="tel" class="f-input" name="phone" placeholder="+39 000 000 0000">
         </div>
         <div class="f-group">
-          <label class="f-label">Raccontaci la tua sfida (Campo Libero)</label>
-          <textarea class="f-input" placeholder="Di cosa hai bisogno o cosa vuoi migliorare?" required></textarea>
+          <label class="f-label" data-i18n="form_message">Raccontaci la tua sfida (Campo Libero)</label>
+          <textarea class="f-input" name="message" placeholder="Di cosa hai bisogno o cosa vuoi migliorare?" required></textarea>
         </div>
-        <button type="submit" class="btn-submit">Invia Richiesta →</button>
+        <button type="submit" class="btn-submit" data-i18n="form_submit">Invia Richiesta →</button>
+        <div class="form-feedback" id="formFeedback" style="display: none;"></div>
       </form>
     </div>
   </div>
@@ -198,25 +210,12 @@
 <!-- FOOTER -->
 <footer style="background: var(--navy-2); padding: 60px; border-top: 1px solid var(--line-light);">
   <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto;">
-
-    <svg viewBox="0 0 280 60" style="height: 35px; width: auto;" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="gradCurveFt" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="var(--cyan)" />
-          <stop offset="100%" stop-color="var(--violet)" />
-        </linearGradient>
-      </defs>
-      <path d="M 10,50 Q 50,45 80,10 T 115,50" fill="none" stroke="url(#gradCurveFt)" stroke-width="6" stroke-linecap="round" />
-      <rect x="45" y="35" width="8" height="15" rx="3" fill="var(--cyan)" />
-      <rect x="65" y="20" width="8" height="30" rx="3" fill="var(--violet)" />
-      <rect x="85" y="10" width="8" height="40" rx="3" fill="var(--bg-color)" />
-      <text x="130" y="42" font-family="'Archivo Black', sans-serif" font-size="28" fill="var(--bg-color)">DIGITAL<tspan fill="var(--violet)">PEAK</tspan></text>
-    </svg>
-
-    <div style="color: var(--gray-2); font-size: 13px;">© 2026 Digital Peak. Growth Without Limits.</div>
+    <img src="assets/img/DigitalPeak_Logo.png" alt="Digital Peak" style="height: 40px; width: auto; object-fit: contain;">
+    <div style="color: var(--gray-2); font-size: 13px;" data-i18n="footer_copy">© 2026 Digital Peak. Growth Without Limits.</div>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
