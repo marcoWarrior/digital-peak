@@ -49,6 +49,7 @@ export default async function handler(req, res) {
 
     let supabaseSaved = false;
     let emailSent = false;
+    let dbErrorMessage = null;
 
     // ─── 1. SALVATAGGIO SU DATABASE (SUPABASE) ───
     const supabaseUrl = process.env.SUPABASE_URL;
@@ -56,11 +57,20 @@ export default async function handler(req, res) {
 
     if (supabaseUrl && supabaseKey) {
       try {
-        const dbRes = await fetch(`${supabaseUrl.replace(/\/$/, '')}/rest/v1/leads`, {
+        // Normalizzazione URL: rimuove trailing slashes ed eventuale /rest/v1 già presente
+        let cleanBaseUrl = supabaseUrl.trim().replace(/\/+$/, '');
+        if (cleanBaseUrl.endsWith('/rest/v1')) {
+          cleanBaseUrl = cleanBaseUrl.slice(0, -('/rest/v1'.length)).replace(/\/+$/, '');
+        }
+        const endpoint = `${cleanBaseUrl}/rest/v1/leads`;
+
+        console.log(`[Supabase] Connessione all'endpoint: ${endpoint}`);
+
+        const dbRes = await fetch(endpoint, {
           method: 'POST',
           headers: {
-            'apikey': supabaseKey,
-            'Authorization': `Bearer ${supabaseKey}`,
+            'apikey': supabaseKey.trim(),
+            'Authorization': `Bearer ${supabaseKey.trim()}`,
             'Content-Type': 'application/json',
             'Prefer': 'return=representation'
           },
@@ -75,15 +85,25 @@ export default async function handler(req, res) {
 
         if (dbRes.ok) {
           supabaseSaved = true;
+          console.log('[Supabase] Lead salvato con successo!');
         } else {
-          const errText = await dbRes.text();
-          console.warn('[Supabase] Errore inserimento lead:', errText);
+          dbErrorMessage = await dbRes.text();
+          console.error('[Supabase] Errore inserimento lead:', dbErrorMessage);
         }
       } catch (dbErr) {
-        console.warn('[Supabase] Connessione non riuscita:', dbErr.message);
+        dbErrorMessage = dbErr.message;
+        console.error('[Supabase] Connessione non riuscita:', dbErr);
       }
     } else {
-      console.info('[Supabase] Credenziali non ancora configurate in environment variables.');
+      console.warn('[Supabase] Credenziali SUPABASE_URL o SUPABASE_ANON_KEY non trovate.');
+    }
+
+    // Se Supabase era configurato ma il salvataggio è fallito, restituiamo errore 500
+    if (supabaseUrl && supabaseKey && !supabaseSaved) {
+      return res.status(500).json({
+        success: false,
+        error: `Errore durante il salvataggio su database: ${dbErrorMessage || 'impossibile inserire il record'}`
+      });
     }
 
     // ─── 2. INVIO NOTIFICA EMAIL VIA RESEND ───
@@ -156,7 +176,7 @@ export default async function handler(req, res) {
         const emailRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${resendApiKey}`,
+            'Authorization': `Bearer ${resendApiKey.trim()}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -170,6 +190,7 @@ export default async function handler(req, res) {
 
         if (emailRes.ok) {
           emailSent = true;
+          console.log('[Resend] Email di notifica inviata con successo!');
         } else {
           const errBody = await emailRes.text();
           console.error('[Resend] Errore invio email:', errBody);
