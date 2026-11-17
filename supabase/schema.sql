@@ -1,6 +1,7 @@
 -- =============================================================================
 -- DIGITAL PEAK — Database Schema per Supabase
 -- Tabella: leads (Salvataggio richieste dal form contatti del sito)
+-- v2: aggiunta colonna page_url (URL della pagina in cui il lead ha compilato il form)
 -- =============================================================================
 
 -- 1. Creazione tabella leads
@@ -12,6 +13,7 @@ create table if not exists public.leads (
     phone text,
     message text not null,
     lang text default 'it' not null,
+    page_url text,              -- URL della pagina sorgente da cui il form è stato inviato
     status text default 'new' not null check (status in ('new', 'contacted', 'qualified', 'closed', 'archived')),
     notes text,
     source text default 'website_contact_form'

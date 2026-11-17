@@ -51,8 +51,13 @@ document.querySelectorAll('a[data-target]').forEach(link => {
 // ─── NAVBAR SCROLL ───
 const nav = document.getElementById('mainNav');
 if (nav) {
+  // Soglia minima di 10px per evitare il flicker quando si torna in cima
+  let lastScrollY = window.scrollY;
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+    const y = window.scrollY;
+    // Aggiunge la classe "scrolled" (sfondo bianco solido) dopo 40px di scroll
+    nav.classList.toggle('scrolled', y > 40);
+    lastScrollY = y;
   }, { passive: true });
 }
 
@@ -116,6 +121,7 @@ if (contactForm) {
 
     const data = Object.fromEntries(new FormData(contactForm).entries());
     data.lang = lang;
+    data.page_url = window.location.href; // URL della pagina in cui si trovava l'utente
 
     try {
       const response = await fetch('/api/contact', {

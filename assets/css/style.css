@@ -28,6 +28,10 @@ nav {
   padding:20px 60px; transition:padding .3s, background .3s, border-color .3s;
   border-bottom:1px solid transparent;
   gap: 20px;
+  /* Sempre leggibile: sfondo semi-opaco leggero di default */
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 nav.scrolled { background:rgba(255,255,255,.98); border-color:var(--line); padding:12px 60px; }
 
