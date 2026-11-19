@@ -168,5 +168,22 @@
   "p_sw_cta_h2": "¿Listo para desarrollar una web que genere negocio real?",
   "p_sw_cta_p": "Analizamos el recorrido de tu comprador y construimos una solución pensada para convertir. Cero plantillas genéricas.",
   "p_sw_cta_btn": "Comienza el proyecto →",
-  "meta_title_home": "Digital Peak — Growth Without Limits"
+  "meta_title_home": "Digital Peak — Growth Without Limits",
+  "hero_explore": "Explorar servicios",
+  "hero_pillar_label": "Arquitectura de crecimiento B2B",
+  "services_eye": "<span class=\"eye-num\">003</span> Servicios",
+  "services_title": "Seis áreas integradas para <span class=\"cy\">escalar</span>",
+  "services_sub": "Cada disciplina trabaja en sinergia con CRM, datos y automatización: cero silos, impacto medible en pipeline.",
+  "breadcrumb_home": "Inicio",
+  "svc_other_eye": "Sigue explorando",
+  "svc_other_title": "Otras áreas de Digital Peak",
+  "footer_tagline": "Agencia B2B de alto contenido tecnológico especializada en captación, automatización, eCommerce y Agentic AI.",
+  "footer_services": "Servicios",
+  "footer_nav": "Navegación",
+  "nav_s1": "Lead Generation B2B",
+  "nav_s2": "eCommerce B2B & CRO",
+  "nav_s3": "Agentic AI",
+  "nav_s4": "Marketing Automation",
+  "nav_s5": "Marketing Strategy",
+  "nav_s6": "Sitios & Apps Web"
 }

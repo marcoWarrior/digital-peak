@@ -3,10 +3,14 @@
 //  Navigazione, animazioni, parallax, form
 // ─────────────────────────────────────────────
 
+const prefersReducedMotion =
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // ─── HAMBURGER MENU ───
-const navToggle   = document.getElementById('navToggle');
-const navLinksEl  = document.getElementById('navLinks');
-const navOverlay  = document.getElementById('navOverlay');
+const navToggle  = document.getElementById('navToggle');
+const navLinksEl = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
 
 const isMenuOpen = () => navLinksEl?.classList.contains('open') ?? false;
 
@@ -18,21 +22,36 @@ function openMenu() {
   document.body.style.overflow = 'hidden';
 }
 
-function closeMenu() {
+function closeMenu(restoreFocus = false) {
+  const wasOpen = isMenuOpen();
   navToggle?.classList.remove('open');
   navLinksEl?.classList.remove('open');
   navOverlay?.classList.remove('open');
   navToggle?.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
+  if (restoreFocus && wasOpen) {
+    navToggle?.focus();
+  }
 }
 
-navToggle?.addEventListener('click', () => isMenuOpen() ? closeMenu() : openMenu());
-navOverlay?.addEventListener('click', closeMenu);
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isMenuOpen()) closeMenu(); });
-window.addEventListener('resize', () => { if (window.innerWidth > 768 && isMenuOpen()) closeMenu(); });
+navToggle?.addEventListener('click', () => (isMenuOpen() ? closeMenu() : openMenu()));
+navOverlay?.addEventListener('click', () => closeMenu());
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && isMenuOpen()) closeMenu(true);
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 860 && isMenuOpen()) closeMenu();
+});
 
-// ─── NAVIGAZIONE INTERNA (smooth scroll + fallback cross-page) ───
-document.querySelectorAll('a[data-target]').forEach(link => {
+// Chiudi il menu mobile al click sui link interni della nav
+navLinksEl?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    if (isMenuOpen()) closeMenu();
+  });
+});
+
+// ─── NAVIGAZIONE INTERNA (smooth scroll + persistenza variante cross-page) ───
+document.querySelectorAll('a[data-target]').forEach((link) => {
   link.addEventListener('click', (e) => {
     const target = link.getAttribute('data-target');
     if (!target) return;
@@ -40,45 +59,107 @@ document.querySelectorAll('a[data-target]').forEach(link => {
     closeMenu();
     const section = document.querySelector(target);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      section.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'start'
+      });
     } else {
-      // Siamo su una sottopagina: torna all'index con l'ancora
-      window.location.href = '../index.html' + target;
+      const dest = window.DPDesign
+        ? window.DPDesign.withDesign('../index.html' + target)
+        : '../index.html' + target;
+      window.location.href = dest;
     }
   });
 });
 
+// Logo in homepage: scrolla al top senza ricaricare
+const homeLogo = document.querySelector('a.nav-logo[href="#home"]');
+if (homeLogo) {
+  homeLogo.addEventListener('click', (e) => {
+    const homeEl = document.getElementById('home');
+    if (!homeEl) return;
+    e.preventDefault();
+    closeMenu();
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    });
+  });
+}
+
 // ─── NAVBAR SCROLL ───
 const nav = document.getElementById('mainNav');
 if (nav) {
-  // Soglia minima di 10px per evitare il flicker quando si torna in cima
-  let lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    // Aggiunge la classe "scrolled" (sfondo bianco solido) dopo 40px di scroll
-    nav.classList.toggle('scrolled', y > 40);
-    lastScrollY = y;
-  }, { passive: true });
+  const updateNavScrolled = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 32);
+  };
+  updateNavScrolled();
+  window.addEventListener('scroll', updateNavScrolled, { passive: true });
 }
 
-// ─── PARALLAX ───
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.parallax-img').forEach(img => {
-    img.style.transform = `translateY(${-(window.scrollY * 0.15)}px)`;
-  });
-}, { passive: true });
+// ─── PARALLAX CONTENUTO E CLAMPED ───
+const parallaxImgs = Array.from(document.querySelectorAll('.parallax-img'));
+if (parallaxImgs.length > 0 && !prefersReducedMotion) {
+  let parallaxTicking = false;
+
+  const updateParallax = () => {
+    parallaxTicking = false;
+    const vh = window.innerHeight || 800;
+    parallaxImgs.forEach((img) => {
+      const container = img.closest('.service-media, .parallax-container') || img.parentElement;
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      if (rect.bottom < -80 || rect.top > vh + 80) return;
+      const centerProgress = (rect.top + rect.height / 2 - vh / 2) / vh;
+      const shift = Math.max(-16, Math.min(16, centerProgress * -24));
+      img.style.transform = `translate3d(0, ${shift.toFixed(1)}px, 0) scale(1.04)`;
+    });
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!parallaxTicking) {
+        parallaxTicking = true;
+        window.requestAnimationFrame(updateParallax);
+      }
+    },
+    { passive: true }
+  );
+  updateParallax();
+}
 
 // ─── SCROLL REVEAL ───
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+const revealTargets = Array.from(document.querySelectorAll('.rv-base, .rv-trigger'));
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  revealTargets.forEach((el) => el.classList.add('in'));
+} else {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
 
-document.querySelectorAll('.rv-base, .rv-trigger').forEach(el => revealObserver.observe(el));
+  revealTargets.forEach((el) => revealObserver.observe(el));
+
+  // Safety check iniziale per elementi già in viewport
+  window.requestAnimationFrame(() => {
+    const vh = window.innerHeight || 800;
+    revealTargets.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh * 0.95 && rect.bottom > 0) {
+        el.classList.add('in');
+        revealObserver.unobserve(el);
+      }
+    });
+  });
+}
 
 // ─── CONTACT FORM (Invio asincrono con feedback visivo) ───
 const contactForm = document.getElementById('contactForm');
@@ -121,7 +202,7 @@ if (contactForm) {
 
     const data = Object.fromEntries(new FormData(contactForm).entries());
     data.lang = lang;
-    data.page_url = window.location.href; // URL della pagina in cui si trovava l'utente
+    data.page_url = window.location.href;
 
     try {
       const response = await fetch('/api/contact', {

@@ -1,11 +1,18 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="../assets/js/design-boot.js"></script>
 <title>Agentic AI — Digital Peak</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/design-a.css">
+<link rel="stylesheet" href="../assets/css/design-b.css">
+<link rel="stylesheet" href="../assets/css/design-c.css">
+<link rel="stylesheet" href="../assets/css/design-d.css">
 <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
@@ -16,114 +23,193 @@
 <div class="nav-overlay" id="navOverlay"></div>
 
 <!-- NAV -->
-<nav id="mainNav">
-  <a href="../index.html" class="nav-logo" style="text-decoration:none;">
-    <img src="../assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#about" data-i18n="nav_about">Chi Siamo</a></li>
-    <li><a href="../index.html#services" data-i18n="nav_services">Servizi</a></li>
-    <li><a href="../index.html#contact" data-i18n="nav_contact">Contatti</a></li>
-    <li><a href="../index.html#contact" class="nav-cta-mobile" data-i18n="nav_cta">Inizia ora</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:24px;">
-    <div class="lang-switcher" id="langSwitcher">
-      <button class="lang-btn active" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="es">ES</button>
+<nav id="mainNav" class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="Digital Peak Home">
+      <img src="../assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#about" data-i18n="nav_about">Chi Siamo</a></li>
+      <li><a href="../index.html#services" data-i18n="nav_services">Servizi</a></li>
+      <li><a href="../index.html#contact" data-i18n="nav_contact">Contatti</a></li>
+      <li><a href="../index.html#contact" class="nav-cta-mobile" data-i18n="nav_cta">Inizia ora</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-switcher" id="langSwitcher">
+        <button type="button" class="lang-btn active" data-lang="it">IT</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <a href="../index.html#contact" class="nav-cta" data-i18n="nav_cta">Inizia ora</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
     </div>
-    <a href="../index.html#contact" class="nav-cta" data-i18n="nav_cta">Inizia ora</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </button>
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="svc-hero">
-  <div class="svc-hero-bg">
-    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1600" alt="Agentic AI">
+<header class="svc-hero">
+  <div class="container svc-hero-grid">
+    <div class="svc-hero-content">
+      <nav class="svc-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html" data-i18n="breadcrumb_home">Home</a>
+        <span class="bc-sep" aria-hidden="true">/</span>
+        <a href="../index.html#services" data-i18n="nav_services">Servizi</a>
+        <span class="bc-sep" aria-hidden="true">/</span>
+        <span class="bc-current" data-i18n="nav_s3">Agentic AI</span>
+      </nav>
+      <div class="svc-eyebrow" data-i18n="p_ai_eyebrow">003 — Agentic AI</div>
+      <h1 class="svc-title" data-i18n="p_ai_title">AGENTIC<br><span>AI</span></h1>
+      <p class="svc-subtitle" data-i18n="p_ai_subtitle">La soluzione AI giusta per il tuo business: analizziamo i processi, individuiamo dove l'AI genera impatto e costruiamo agenti su misura, senza soluzioni preconfezionate.</p>
+    </div>
+    <div class="svc-hero-media">
+      <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1600" alt="Agentic AI">
+    </div>
   </div>
-  <div class="svc-hero-content">
-    <div class="svc-eyebrow" data-i18n="p_ai_eyebrow">003 — Agentic AI</div>
-    <h1 class="svc-title" data-i18n="p_ai_title">AGENTIC<br><span>AI</span></h1>
-    <p class="svc-subtitle" data-i18n="p_ai_subtitle">La soluzione AI giusta per il tuo business: analizziamo i processi, individuiamo dove l'AI genera impatto e costruiamo agenti su misura, senza soluzioni preconfezionate.</p>
-  </div>
-</div>
+</header>
 
 <!-- INTRO -->
-<div class="svc-intro">
-  <div class="svc-intro-grid">
+<section class="svc-intro">
+  <div class="container svc-intro-grid">
     <div class="rv-base rv-up">
       <div class="svc-intro-label" data-i18n="p_ai_intro_label">Il nostro approccio</div>
       <h2 data-i18n="p_ai_intro_h2">Prima il Problema,<br>Poi la Soluzione</h2>
     </div>
-    <div class="rv-base rv-up" style="transition-delay: 0.2s;">
+    <div class="rv-base rv-up">
       <p data-i18n="p_ai_intro_p">Non vendiamo soluzioni AI preconfezionate. Partiamo dall'analisi dei tuoi processi: identifichiamo i colli di bottiglia, mappiamo le opportunità di automazione e costruiamo agenti su misura che si integrano nel tuo stack senza interrompere l'operatività. Ogni agente è misurato su KPI di business reali.</p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- SERVICE CARDS -->
-<div class="svc-cards">
-  <div class="svc-cards-grid">
+<section class="svc-cards">
+  <div class="container svc-cards-grid">
 
-    <div class="svc-card rv-base rv-up">
-      <span class="svc-card-tag" data-i18n="tag_core">Core</span>
-      <h3 data-i18n="p_ai_c1_h3">AI Audit & Opportunity Mapping</h3>
+    <article class="svc-card rv-base rv-up" data-tag="core">
+      <div class="svc-card-head">
+        <span class="svc-card-num">01</span>
+        <span class="svc-card-tag" data-i18n="tag_core">Core</span>
+      </div>
+      <h3 data-i18n="p_ai_c1_h3">AI Audit &amp; Opportunity Mapping</h3>
       <p data-i18n="p_ai_c1_p">Analisi di processi e colli di bottiglia per capire dove gli agenti AI portano il ritorno più alto nel minor tempo. Prima si capisce il problema, poi si costruisce la soluzione. Output: mappa delle opportunità prioritizzate per ROI.</p>
-    </div>
+    </article>
 
-    <div class="svc-card rv-base rv-up" style="transition-delay: 0.1s;">
-      <span class="svc-card-tag" data-i18n="tag_core">Core</span>
+    <article class="svc-card rv-base rv-up" data-tag="core">
+      <div class="svc-card-head">
+        <span class="svc-card-num">02</span>
+        <span class="svc-card-tag" data-i18n="tag_core">Core</span>
+      </div>
       <h3 data-i18n="p_ai_c2_h3">Agenti su Misura</h3>
       <p data-i18n="p_ai_c2_p">Agenti per sales, research e processi, progettati sul contesto del cliente. Use case: prospecting automatizzato, qualifica lead in tempo reale, ricerca competitiva continua, supporto al sales nella preparazione delle trattative.</p>
-    </div>
+    </article>
 
-    <div class="svc-card accent-cyan rv-base rv-up" style="transition-delay: 0.2s;">
-      <span class="svc-card-tag" data-i18n="tag_cross">Trasversale</span>
+    <article class="svc-card accent-cyan rv-base rv-up" data-tag="cross">
+      <div class="svc-card-head">
+        <span class="svc-card-num">03</span>
+        <span class="svc-card-tag" data-i18n="tag_cross">Trasversale</span>
+      </div>
       <h3 data-i18n="p_ai_c3_h3">Integrazione nello Stack</h3>
       <p data-i18n="p_ai_c3_p">Gli agenti si collegano a CRM, strumenti di outreach e processi esistenti, senza interrompere l'operatività. Compatibilità con i principali CRM (HubSpot, Salesforce, Pipedrive) e strumenti di automazione.</p>
-    </div>
+    </article>
 
-    <div class="svc-card accent-cyan rv-base rv-up" style="transition-delay: 0.1s;">
-      <span class="svc-card-tag" data-i18n="tag_cross">Trasversale</span>
-      <h3 data-i18n="p_ai_c4_h3">Governance & KPI degli Agenti</h3>
+    <article class="svc-card accent-cyan rv-base rv-up" data-tag="cross">
+      <div class="svc-card-head">
+        <span class="svc-card-num">04</span>
+        <span class="svc-card-tag" data-i18n="tag_cross">Trasversale</span>
+      </div>
+      <h3 data-i18n="p_ai_c4_h3">Governance &amp; KPI degli Agenti</h3>
       <p data-i18n="p_ai_c4_p">Soglie di autonomia chiare e controllo umano sempre garantito. Ogni agente è misurato su KPI di business (lead qualificati, ore risparmiate, processi accelerati) e riadattato se non porta valore.</p>
-    </div>
+    </article>
 
-    <div class="svc-card rv-base rv-up" style="transition-delay: 0.2s;">
-      <span class="svc-card-tag" data-i18n="tag_upcoming">In Arrivo</span>
+    <article class="svc-card rv-base rv-up" data-tag="upcoming">
+      <div class="svc-card-head">
+        <span class="svc-card-num">05</span>
+        <span class="svc-card-tag" data-i18n="tag_upcoming">In Arrivo</span>
+      </div>
       <h3 data-i18n="p_ai_c5_h3">Compliance AI</h3>
       <p data-i18n="p_ai_c5_p">Framework di governance per l'uso responsabile dell'AI in azienda: policy, audit trail, gestione dei dati sensibili e conformità alle normative europee sull'intelligenza artificiale (AI Act).</p>
-    </div>
+    </article>
 
-    <div class="svc-card rv-base rv-up" style="transition-delay: 0.3s;">
-      <span class="svc-card-tag" data-i18n="tag_upcoming">In Arrivo</span>
+    <article class="svc-card rv-base rv-up" data-tag="upcoming">
+      <div class="svc-card-head">
+        <span class="svc-card-num">06</span>
+        <span class="svc-card-tag" data-i18n="tag_upcoming">In Arrivo</span>
+      </div>
       <h3 data-i18n="p_ai_c6_h3">API Custom</h3>
       <p data-i18n="p_ai_c6_p">Sviluppo di API personalizzate per connettere i tuoi agenti AI con sistemi proprietari, database interni e fonti di dati specifiche del settore. Integrazione sicura e scalabile.</p>
-    </div>
+    </article>
 
   </div>
-</div>
+</section>
+
+<!-- RELATED SERVICES -->
+<section class="svc-related">
+  <div class="container">
+    <div class="svc-related-header">
+      <span class="svc-related-eye" data-i18n="svc_other_eye">Continua a esplorare</span>
+      <h2 class="svc-related-title" data-i18n="svc_other_title">Le altre aree di Digital Peak</h2>
+    </div>
+    <div class="svc-related-grid">
+      <a href="lead-generation.html" class="svc-related-link"><span class="rel-num">01</span><span class="rel-name" data-i18n="nav_s1">Lead Generation B2B</span><span class="rel-arrow">→</span></a>
+      <a href="ecommerce-cro.html" class="svc-related-link"><span class="rel-num">02</span><span class="rel-name" data-i18n="nav_s2">eCommerce B2B &amp; CRO</span><span class="rel-arrow">→</span></a>
+      <a href="marketing-automation.html" class="svc-related-link"><span class="rel-num">04</span><span class="rel-name" data-i18n="nav_s4">Marketing Automation</span><span class="rel-arrow">→</span></a>
+      <a href="strategia-marketing.html" class="svc-related-link"><span class="rel-num">05</span><span class="rel-name" data-i18n="nav_s5">Marketing Strategy</span><span class="rel-arrow">→</span></a>
+      <a href="siti-web.html" class="svc-related-link"><span class="rel-num">06</span><span class="rel-name" data-i18n="nav_s6">Siti &amp; App Web</span><span class="rel-arrow">→</span></a>
+    </div>
+  </div>
+</section>
 
 <!-- CTA BAND -->
-<div class="svc-cta-band">
-  <h2 data-i18n="p_ai_cta_h2">Pronto a costruire il tuo agente?</h2>
-  <p data-i18n="p_ai_cta_p">Inizia con un AI Audit gratuito: analizziamo i tuoi processi e identifichiamo le prime opportunità di automazione.</p>
-  <a href="../index.html#contact" data-i18n="p_ai_cta_btn">Parliamo del tuo progetto →</a>
-</div>
+<section class="svc-cta-band">
+  <div class="container svc-cta-inner">
+    <h2 data-i18n="p_ai_cta_h2">Pronto a costruire il tuo agente?</h2>
+    <p data-i18n="p_ai_cta_p">Inizia con un AI Audit gratuito: analizziamo i tuoi processi e identifichiamo le prime opportunità di automazione.</p>
+    <a href="../index.html#contact" class="svc-cta-btn" data-i18n="p_ai_cta_btn">Parliamo del tuo progetto →</a>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer style="background: var(--navy-2); padding: 60px; border-top: 1px solid var(--line-light);">
-  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto;">
-    <img src="../assets/img/DigitalPeak_Logo.png" alt="Digital Peak" style="height: 40px; width: auto; object-fit: contain;">
-    <div style="color: var(--gray-2); font-size: 13px;" data-i18n="footer_copy">© 2026 Digital Peak. Growth Without Limits.</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-logo" aria-label="Digital Peak">
+          <img src="../assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
+        </a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Agenzia B2B ad alto contenuto tecnologico specializzata in acquisizione, automazione, eCommerce e Agentic AI.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading" data-i18n="footer_services">Servizi</h3>
+        <ul class="footer-list">
+          <li><a href="lead-generation.html" data-i18n="nav_s1">Lead Generation B2B</a></li>
+          <li><a href="ecommerce-cro.html" data-i18n="nav_s2">eCommerce B2B &amp; CRO</a></li>
+          <li><a href="agentic-ai.html" data-i18n="nav_s3">Agentic AI</a></li>
+          <li><a href="marketing-automation.html" data-i18n="nav_s4">Marketing Automation</a></li>
+          <li><a href="strategia-marketing.html" data-i18n="nav_s5">Marketing Strategy</a></li>
+          <li><a href="siti-web.html" data-i18n="nav_s6">Siti &amp; App Web</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading" data-i18n="footer_nav">Navigazione</h3>
+        <ul class="footer-list">
+          <li><a href="../index.html#about" data-i18n="nav_about">Chi Siamo</a></li>
+          <li><a href="../index.html#services" data-i18n="nav_services">Servizi</a></li>
+          <li><a href="../index.html#contact" data-i18n="nav_contact">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" data-i18n="footer_copy">© 2026 Digital Peak. Growth Without Limits.</div>
+    </div>
   </div>
 </footer>
 
+<script src="../assets/js/d/world.js"></script>
+<script src="../assets/js/d/audio.js"></script>
+<script src="../assets/js/d/surf-game.js"></script>
+<script src="../assets/js/d/design-d.js"></script>
 <script src="../assets/js/i18n.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
 </html>
-

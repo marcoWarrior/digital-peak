@@ -3,9 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="assets/js/design-boot.js"></script>
 <title data-i18n="meta_title_home">Digital Peak — Growth Without Limits</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/design-a.css">
+<link rel="stylesheet" href="assets/css/design-b.css">
+<link rel="stylesheet" href="assets/css/design-c.css">
+<link rel="stylesheet" href="assets/css/design-d.css">
 <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
@@ -13,212 +20,288 @@
 </head>
 <body>
 
-<!-- OVERLAY SCURO PER MENU MOBILE -->
 <div class="nav-overlay" id="navOverlay"></div>
 
 <!-- NAV -->
-<nav id="mainNav">
-  <a href="#" class="nav-logo" style="text-decoration:none;">
-    <img src="assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
-  </a>
+<nav id="mainNav" class="site-nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" aria-label="Digital Peak Home">
+      <img src="assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
+    </a>
 
-  <ul class="nav-links" id="navLinks">
-    <li><a data-target="#about" data-i18n="nav_about">Chi Siamo</a></li>
-    <li><a data-target="#services" data-i18n="nav_services">Servizi</a></li>
-    <li><a data-target="#contact" data-i18n="nav_contact">Contatti</a></li>
-    <li><a data-target="#contact" class="nav-cta-mobile" data-i18n="nav_cta">Inizia ora</a></li>
-  </ul>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-target="#about" data-i18n="nav_about">Chi Siamo</a></li>
+      <li><a href="#services" data-target="#services" data-i18n="nav_services">Servizi</a></li>
+      <li><a href="#contact" data-target="#contact" data-i18n="nav_contact">Contatti</a></li>
+      <li><a href="#contact" data-target="#contact" class="nav-cta-mobile" data-i18n="nav_cta">Inizia ora</a></li>
+    </ul>
 
-  <div style="display:flex;align-items:center;gap:24px;">
-    <div class="lang-switcher" id="langSwitcher">
-      <button class="lang-btn active" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="es">ES</button>
+    <div class="nav-actions">
+      <div class="lang-switcher" id="langSwitcher">
+        <button type="button" class="lang-btn active" data-lang="it">IT</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <a href="#contact" data-target="#contact" class="nav-cta" data-i18n="nav_cta">Inizia ora</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     </div>
-    <a data-target="#contact" class="nav-cta" data-i18n="nav_cta">Inizia ora</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg-word">PEAK</div>
-  <div class="hero-left">
-    <div class="hero-index" data-i18n="hero_eyebrow">001 — L'onda perfetta</div>
-    <h1 class="hero-title" data-i18n="hero_title">Cavalca l'onda del<br><span class="accent">cambiamento</span></h1>
+<header class="hero" id="home">
+  <div class="hero-bg-layer" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="hero-index" data-i18n="hero_eyebrow">001 — L'onda perfetta</div>
+      <h1 class="hero-title" data-i18n="hero_title">Cavalca l'onda del<br><span class="accent">cambiamento</span></h1>
+      <p class="hero-sub" data-i18n="hero_sub">Strategia, tecnologia e azione per aziende che vogliono dominare il mercato e scalare senza rallentare.</p>
+      <div class="hero-actions">
+        <a href="#contact" data-target="#contact" class="btn-primary" data-i18n="nav_cta">Inizia ora</a>
+        <a href="#services" data-target="#services" class="btn-secondary" data-i18n="hero_explore">Esplora i servizi</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-photo-frame">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400" alt="Digital Peak — Strategia e architettura digitale B2B" class="hero-photo">
+      </div>
+      <div class="hero-pillars-card">
+        <span class="hero-pillars-kicker" data-i18n="hero_pillar_label">Architettura di crescita B2B</span>
+        <ol class="hero-pillars-list">
+          <li><span class="pillar-idx">01</span><span class="pillar-name" data-i18n="method_1_title">Studio</span></li>
+          <li><span class="pillar-idx">02</span><span class="pillar-name" data-i18n="method_2_title">Preparazione</span></li>
+          <li><span class="pillar-idx">03</span><span class="pillar-name" data-i18n="method_3_title">Azione</span></li>
+        </ol>
+      </div>
+    </div>
   </div>
-  <div class="hero-right">
-    <p class="hero-sub" data-i18n="hero_sub">Strategia, tecnologia e azione per aziende che vogliono dominare il mercato e scalare senza rallentare.</p>
-  </div>
-</section>
+</header>
 
 <!-- CHI SIAMO & METODO -->
-<section class="section section-dark" id="about">
-  <div class="section-eye" data-i18n="about_eye"><span class="eye-num">002</span> Chi Siamo</div>
+<section class="section about-section" id="about">
+  <div class="container">
+    <div class="section-eye" data-i18n="about_eye"><span class="eye-num">002</span> Chi Siamo</div>
 
-  <div class="rv-base rv-up">
-    <h2 class="big-title" data-i18n="about_title">Da oltre 15 anni lavoriamo nel <span class="cy">B2B</span></h2>
-    <p class="body-text" data-i18n="about_p">Siamo specialisti nell'analisi della parte bassa del funnel. Non ci interessano i numeri che fanno solo scena: creiamo valore concentrandoci in modo ossessivo sulle azioni che impattano realmente il tuo business in termini di conversione e lead generation.</p>
-  </div>
+    <div class="about-header rv-base rv-up">
+      <h2 class="big-title" data-i18n="about_title">Da oltre 15 anni lavoriamo nel <span class="cy">B2B</span></h2>
+      <p class="body-text" data-i18n="about_p">Siamo specialisti nell'analisi della parte bassa del funnel. Non ci interessano i numeri che fanno solo scena: creiamo valore concentrandoci in modo ossessivo sulle azioni che impattano realmente il tuo business in termini di conversione e lead generation.</p>
+    </div>
 
-  <div class="method-grid rv-trigger">
-    <div class="method-col rv-child" style="transition-delay: 0.1s;">
-      <h3 class="method-title" data-i18n="method_1_title">Studio</h3>
-      <p class="method-text" data-i18n="method_1_text">Leggiamo le correnti prima di entrare in acqua. Analizziamo il mercato, identifichiamo i cluster di acquisto ad alta resa e definiamo un posizionamento inattaccabile.</p>
-    </div>
-    <div class="method-col rv-child" style="transition-delay: 0.3s;">
-      <h3 class="method-title" data-i18n="method_2_title">Preparazione</h3>
-      <p class="method-text" data-i18n="method_2_text">Costruiamo l'infrastruttura tecnologica. Integriamo CRM, marketing automation e sistemi di tracciamento affinché nessun dato e nessuna opportunità vengano dispersi.</p>
-    </div>
-    <div class="method-col rv-child" style="transition-delay: 0.5s;">
-      <h3 class="method-title" data-i18n="method_3_title">Azione</h3>
-      <p class="method-text" data-i18n="method_3_text">Cavalchiamo l'onda. Attiviamo strategie di acquisizione mirate e ottimizziamo i tassi di conversione in modo continuo, con un focus ossessivo sull'esecuzione.</p>
+    <div class="method-grid rv-trigger">
+      <article class="method-col rv-child">
+        <span class="method-num">01</span>
+        <h3 class="method-title" data-i18n="method_1_title">Studio</h3>
+        <p class="method-text" data-i18n="method_1_text">Leggiamo le correnti prima di entrare in acqua. Analizziamo il mercato, identifichiamo i cluster di acquisto ad alta resa e definiamo un posizionamento inattaccabile.</p>
+      </article>
+      <article class="method-col rv-child">
+        <span class="method-num">02</span>
+        <h3 class="method-title" data-i18n="method_2_title">Preparazione</h3>
+        <p class="method-text" data-i18n="method_2_text">Costruiamo l'infrastruttura tecnologica. Integriamo CRM, marketing automation e sistemi di tracciamento affinché nessun dato e nessuna opportunità vengano dispersi.</p>
+      </article>
+      <article class="method-col rv-child">
+        <span class="method-num">03</span>
+        <h3 class="method-title" data-i18n="method_3_title">Azione</h3>
+        <p class="method-text" data-i18n="method_3_text">Cavalchiamo l'onda. Attiviamo strategie di acquisizione mirate e ottimizziamo i tassi di conversione in modo continuo, con un focus ossessivo sull'esecuzione.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- SERVIZI OGILVY STYLE -->
-<section id="services" style="background: var(--navy);">
-
-  <!-- 1: Lead Generation -->
-  <div class="og-service rv-base rv-up">
-    <div class="og-bg parallax-container">
-      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1600" alt="Lead Generation" class="parallax-img">
-    </div>
-    <div class="og-content">
-      <h2 class="og-title" data-i18n="s1_heading">LEAD <br><span class="og-title-outline">GENERATION</span></h2>
-      <div class="og-desc-box">
-        <h3 class="og-desc-title" data-i18n="s1_title">Acquisizione B2B</h3>
-        <p class="og-desc-text" data-i18n="s1_desc">Costruiamo sistemi prevedibili che ti portano contatti qualificati. Intercettiamo chi ha già bisogno del tuo prodotto e risvegliamo l'interesse di chi non ti conosce, azzerando la dispersione di budget.</p>
-        <a href="pages/lead-generation.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+<!-- SERVIZI -->
+<section class="section services-section" id="services">
+  <div class="container">
+    <div class="services-header rv-base rv-up">
+      <div class="section-eye" data-i18n="services_eye"><span class="eye-num">003</span> Servizi</div>
+      <div class="services-header-row">
+        <h2 class="big-title" data-i18n="services_title">Sei aree integrate per <span class="cy">scalare</span></h2>
+        <p class="body-text" data-i18n="services_sub">Ogni disciplina lavora in sinergia con CRM, dati e automazione: zero silos, impatto misurabile sulla pipeline.</p>
       </div>
     </div>
-  </div>
 
-  <!-- 2: eCommerce B2B -->
-  <div class="og-service rv-base rv-up">
-    <div class="og-bg parallax-container">
-      <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1600" alt="eCommerce B2B" class="parallax-img">
-    </div>
-    <div class="og-content" style="align-items: flex-end; text-align: right;">
-      <h2 class="og-title" data-i18n="s2_heading"><span class="og-title-outline">ECOMMERCE</span><br>B2B</h2>
-      <div class="og-desc-box" style="text-align: left; border-left: none; border-right: 4px solid var(--cyan);">
-        <h3 class="og-desc-title" data-i18n="s2_title">Ottimizzazione Conversioni</h3>
-        <p class="og-desc-text" data-i18n="s2_desc">Miglioramento netto della conversione nel mondo eCommerce. Rimuoviamo ogni ostacolo all'acquisto, ottimizzando l'esperienza dell'utente per massimizzare il volume delle transazioni.</p>
-        <a href="pages/ecommerce-cro.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
-      </div>
+    <div class="services-list">
+
+      <!-- 1: Lead Generation -->
+      <article class="service-card rv-base rv-up" data-service="1">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1600" alt="Lead Generation B2B" class="service-img parallax-img" loading="lazy">
+        </div>
+        <div class="service-body">
+          <span class="service-num">01</span>
+          <h3 class="og-title" data-i18n="s1_heading">LEAD <br><span class="og-title-outline">GENERATION</span></h3>
+          <div class="service-meta">
+            <h4 class="og-desc-title" data-i18n="s1_title">Acquisizione B2B</h4>
+            <p class="og-desc-text" data-i18n="s1_desc">Costruiamo sistemi prevedibili che ti portano contatti qualificati. Intercettiamo chi ha già bisogno del tuo prodotto e risvegliamo l'interesse di chi non ti conosce, azzerando la dispersione di budget.</p>
+            <a href="pages/lead-generation.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2: eCommerce B2B -->
+      <article class="service-card rv-base rv-up" data-service="2">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1600" alt="eCommerce B2B & CRO" class="service-img parallax-img" loading="lazy">
+        </div>
+        <div class="service-body">
+          <span class="service-num">02</span>
+          <h3 class="og-title" data-i18n="s2_heading"><span class="og-title-outline">ECOMMERCE</span><br>B2B</h3>
+          <div class="service-meta">
+            <h4 class="og-desc-title" data-i18n="s2_title">Ottimizzazione Conversioni</h4>
+            <p class="og-desc-text" data-i18n="s2_desc">Miglioramento netto della conversione nel mondo eCommerce. Rimuoviamo ogni ostacolo all'acquisto, ottimizzando l'esperienza dell'utente per massimizzare il volume delle transazioni.</p>
+            <a href="pages/ecommerce-cro.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3: Agentic AI -->
+      <article class="service-card rv-base rv-up" data-service="3">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1600" alt="Agentic AI" class="service-img parallax-img" loading="lazy">
+        </div>
+        <div class="service-body">
+          <span class="service-num">03</span>
+          <h3 class="og-title" data-i18n="s3_heading">AGENTIC <br><span class="og-title-outline">AI</span></h3>
+          <div class="service-meta">
+            <h4 class="og-desc-title" data-i18n="s3_title">Agenti su Misura</h4>
+            <p class="og-desc-text" data-i18n="s3_desc">La soluzione AI giusta per il tuo business: analizziamo i processi, individuiamo dove l'AI genera impatto e costruiamo agenti su misura, senza soluzioni preconfezionate.</p>
+            <a href="pages/agentic-ai.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4: Marketing Automation -->
+      <article class="service-card rv-base rv-up" data-service="4">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600" alt="Marketing Automation" class="service-img parallax-img" loading="lazy">
+        </div>
+        <div class="service-body">
+          <span class="service-num">04</span>
+          <h3 class="og-title" data-i18n="s4_heading"><span class="og-title-outline">MARKETING</span><br>AUTOMATION</h3>
+          <div class="service-meta">
+            <h4 class="og-desc-title" data-i18n="s4_title">Integrazione di Sistema</h4>
+            <p class="og-desc-text" data-i18n="s4_desc">Eliminiamo i silos tra social, ads, web, database e CRM. Le stesse automazioni che accelerano la lead generation B2B scalano anche nell'eCommerce: una sola infrastruttura, molti contesti.</p>
+            <a href="pages/marketing-automation.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5: Marketing Strategy -->
+      <article class="service-card rv-base rv-up" data-service="5">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600" alt="Marketing Strategy" class="service-img parallax-img" loading="lazy">
+        </div>
+        <div class="service-body">
+          <span class="service-num">05</span>
+          <h3 class="og-title" data-i18n="s5_heading">MARKETING <br><span class="og-title-outline">STRATEGY</span></h3>
+          <div class="service-meta">
+            <h4 class="og-desc-title" data-i18n="s5_title">Consulenza Direzionale</h4>
+            <p class="og-desc-text" data-i18n="s5_desc">La strategia digitale che unisce tutti i canali e le automazioni in un sistema di crescita coerente e misurabile. Definiamo le metriche da scalare e l'architettura dei canali.</p>
+            <a href="pages/strategia-marketing.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6: Siti & App Web -->
+      <article class="service-card rv-base rv-up" data-service="6">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1600" alt="Siti & App Web" class="service-img parallax-img" loading="lazy">
+        </div>
+        <div class="service-body">
+          <span class="service-num">06</span>
+          <h3 class="og-title" data-i18n="s6_heading"><span class="og-title-outline">SITI</span><br>&amp; APP WEB</h3>
+          <div class="service-meta">
+            <h4 class="og-desc-title" data-i18n="s6_title">Web Design &amp; Sviluppo</h4>
+            <p class="og-desc-text" data-i18n="s6_desc">Siti B2B ad alta conversione e web application su misura, con integrazione CRM nativa. Design premium, performance ottimale e collegamento nativo con il tuo stack tecnologico.</p>
+            <a href="pages/siti-web.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
-
-  <!-- 3: Agentic AI -->
-  <div class="og-service rv-base rv-up">
-    <div class="og-bg parallax-container">
-      <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1600" alt="Agentic AI" class="parallax-img">
-    </div>
-    <div class="og-content">
-      <h2 class="og-title" data-i18n="s3_heading">AGENTIC <br><span class="og-title-outline">AI</span></h2>
-      <div class="og-desc-box">
-        <h3 class="og-desc-title" data-i18n="s3_title">Agenti su Misura</h3>
-        <p class="og-desc-text" data-i18n="s3_desc">La soluzione AI giusta per il tuo business: analizziamo i processi, individuiamo dove l'AI genera impatto e costruiamo agenti su misura, senza soluzioni preconfezionate.</p>
-        <a href="pages/agentic-ai.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- 4: Marketing Automation -->
-  <div class="og-service rv-base rv-up">
-    <div class="og-bg parallax-container">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600" alt="Marketing Automation" class="parallax-img">
-    </div>
-    <div class="og-content" style="align-items: flex-end; text-align: right;">
-      <h2 class="og-title" data-i18n="s4_heading"><span class="og-title-outline">MARKETING</span><br>AUTOMATION</h2>
-      <div class="og-desc-box" style="text-align: left; border-left: none; border-right: 4px solid var(--violet);">
-        <h3 class="og-desc-title" data-i18n="s4_title">Integrazione di Sistema</h3>
-        <p class="og-desc-text" data-i18n="s4_desc">Eliminiamo i silos tra social, ads, web, database e CRM. Le stesse automazioni che accelerano la lead generation B2B scalano anche nell'eCommerce: una sola infrastruttura, molti contesti.</p>
-        <a href="pages/marketing-automation.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- 5: Marketing Strategy -->
-  <div class="og-service rv-base rv-up">
-    <div class="og-bg parallax-container">
-      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600" alt="Marketing Strategy" class="parallax-img">
-    </div>
-    <div class="og-content">
-      <h2 class="og-title" data-i18n="s5_heading">MARKETING <br><span class="og-title-outline">STRATEGY</span></h2>
-      <div class="og-desc-box">
-        <h3 class="og-desc-title" data-i18n="s5_title">Consulenza Direzionale</h3>
-        <p class="og-desc-text" data-i18n="s5_desc">La strategia digitale che unisce tutti i canali e le automazioni in un sistema di crescita coerente e misurabile. Definiamo le metriche da scalare e l'architettura dei canali.</p>
-        <a href="pages/strategia-marketing.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- 6: Siti & App Web -->
-  <div class="og-service rv-base rv-up">
-    <div class="og-bg parallax-container">
-      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1600" alt="Siti & App Web" class="parallax-img">
-    </div>
-    <div class="og-content" style="align-items: flex-end; text-align: right;">
-      <h2 class="og-title" data-i18n="s6_heading"><span class="og-title-outline">SITI</span><br>& APP WEB</h2>
-      <div class="og-desc-box" style="text-align: left; border-left: none; border-right: 4px solid var(--cyan);">
-        <h3 class="og-desc-title" data-i18n="s6_title">Web Design & Sviluppo</h3>
-        <p class="og-desc-text" data-i18n="s6_desc">Siti B2B ad alta conversione e web application su misura, con integrazione CRM nativa. Design premium, performance ottimale e collegamento nativo con il tuo stack tecnologico.</p>
-        <a href="pages/siti-web.html" class="og-link" data-i18n="s_discover">Scopri il servizio <span>→</span></a>
-      </div>
-    </div>
-  </div>
-
 </section>
 
 <!-- CONTACT FORM -->
-<section class="section section-dark" id="contact">
-  <div class="section-eye" data-i18n="contact_eye"><span class="eye-num">004</span> Contatti</div>
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="section-eye" data-i18n="contact_eye"><span class="eye-num">004</span> Contatti</div>
 
-  <div class="ct-layout">
-    <div class="rv-base rv-up">
-      <h2 class="big-title" data-i18n="contact_title">Dove vuoi migliorare il tuo <span class="cy">business?</span></h2>
-      <p class="body-text" data-i18n="contact_sub">Non usiamo script preimpostati. Inviaci la tua richiesta: analizzeremo i tuoi dati e fisseremo una chiacchierata esplorativa, senza impegno, per capire come scalare i tuoi risultati.</p>
-    </div>
+    <div class="ct-layout">
+      <div class="ct-copy rv-base rv-up">
+        <h2 class="big-title" data-i18n="contact_title">Dove vuoi migliorare il tuo <span class="cy">business?</span></h2>
+        <p class="body-text" data-i18n="contact_sub">Non usiamo script preimpostati. Inviaci la tua richiesta: analizzeremo i tuoi dati e fisseremo una chiacchierata esplorativa, senza impegno, per capire come scalare i tuoi risultati.</p>
+      </div>
 
-    <div class="rv-base rv-up" style="transition-delay: 0.2s;">
-      <form id="contactForm" style="background: rgba(255,255,255,0.02); padding: 40px; border-radius: 8px; border: 1px solid var(--line-light);">
-        <div class="f-group">
-          <label class="f-label" data-i18n="form_name">Nome e Cognome</label>
-          <input type="text" class="f-input" name="name" placeholder="Mario Rossi" required>
-        </div>
-        <div class="f-group">
-          <label class="f-label" data-i18n="form_email">Mail Aziendale</label>
-          <input type="email" class="f-input" name="email" placeholder="mario@tuaazienda.it" required>
-        </div>
-        <div class="f-group">
-          <label class="f-label" data-i18n="form_phone">Telefono</label>
-          <input type="tel" class="f-input" name="phone" placeholder="+39 000 000 0000">
-        </div>
-        <div class="f-group">
-          <label class="f-label" data-i18n="form_message">Raccontaci la tua sfida (Campo Libero)</label>
-          <textarea class="f-input" name="message" placeholder="Di cosa hai bisogno o cosa vuoi migliorare?" required></textarea>
-        </div>
-        <button type="submit" class="btn-submit" data-i18n="form_submit">Invia Richiesta →</button>
-        <div class="form-feedback" id="formFeedback" style="display: none;"></div>
-      </form>
+      <div class="ct-form-wrap rv-base rv-up">
+        <form id="contactForm" class="contact-form">
+          <div class="f-group">
+            <label class="f-label" for="dp-name" data-i18n="form_name">Nome e Cognome</label>
+            <input type="text" id="dp-name" class="f-input" name="name" placeholder="Mario Rossi" required>
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="dp-email" data-i18n="form_email">Mail Aziendale</label>
+            <input type="email" id="dp-email" class="f-input" name="email" placeholder="mario@tuaazienda.it" required>
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="dp-phone" data-i18n="form_phone">Telefono</label>
+            <input type="tel" id="dp-phone" class="f-input" name="phone" placeholder="+39 000 000 0000">
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="dp-message" data-i18n="form_message">Raccontaci la tua sfida (Campo Libero)</label>
+            <textarea id="dp-message" class="f-input" name="message" placeholder="Di cosa hai bisogno o cosa vuoi migliorare?" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit" data-i18n="form_submit">Invia Richiesta →</button>
+          <div class="form-feedback" id="formFeedback" style="display: none;" role="status" aria-live="polite"></div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer style="background: var(--navy-2); padding: 60px; border-top: 1px solid var(--line-light);">
-  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto;">
-    <img src="assets/img/DigitalPeak_Logo.png" alt="Digital Peak" style="height: 40px; width: auto; object-fit: contain;">
-    <div style="color: var(--gray-2); font-size: 13px;" data-i18n="footer_copy">© 2026 Digital Peak. Growth Without Limits.</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="footer-logo" aria-label="Digital Peak">
+          <img src="assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
+        </a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Agenzia B2B ad alto contenuto tecnologico specializzata in acquisizione, automazione, eCommerce e Agentic AI.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading" data-i18n="footer_services">Servizi</h3>
+        <ul class="footer-list">
+          <li><a href="pages/lead-generation.html" data-i18n="nav_s1">Lead Generation B2B</a></li>
+          <li><a href="pages/ecommerce-cro.html" data-i18n="nav_s2">eCommerce B2B &amp; CRO</a></li>
+          <li><a href="pages/agentic-ai.html" data-i18n="nav_s3">Agentic AI</a></li>
+          <li><a href="pages/marketing-automation.html" data-i18n="nav_s4">Marketing Automation</a></li>
+          <li><a href="pages/strategia-marketing.html" data-i18n="nav_s5">Marketing Strategy</a></li>
+          <li><a href="pages/siti-web.html" data-i18n="nav_s6">Siti &amp; App Web</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading" data-i18n="footer_nav">Navigazione</h3>
+        <ul class="footer-list">
+          <li><a href="#about" data-target="#about" data-i18n="nav_about">Chi Siamo</a></li>
+          <li><a href="#services" data-target="#services" data-i18n="nav_services">Servizi</a></li>
+          <li><a href="#contact" data-target="#contact" data-i18n="nav_contact">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" data-i18n="footer_copy">© 2026 Digital Peak. Growth Without Limits.</div>
+    </div>
   </div>
 </footer>
 
+<script src="assets/js/d/world.js"></script>
+<script src="assets/js/d/audio.js"></script>
+<script src="assets/js/d/surf-game.js"></script>
+<script src="assets/js/d/design-d.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 </body>

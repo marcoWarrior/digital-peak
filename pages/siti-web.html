@@ -1,11 +1,18 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Siti & App Web — Digital Peak</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
+<script src="../assets/js/design-boot.js"></script>
+<title>Siti &amp; App Web — Digital Peak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/design-a.css">
+<link rel="stylesheet" href="../assets/css/design-b.css">
+<link rel="stylesheet" href="../assets/css/design-c.css">
+<link rel="stylesheet" href="../assets/css/design-d.css">
 <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
@@ -16,114 +23,193 @@
 <div class="nav-overlay" id="navOverlay"></div>
 
 <!-- NAV -->
-<nav id="mainNav">
-  <a href="../index.html" class="nav-logo" style="text-decoration:none;">
-    <img src="../assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#about" data-i18n="nav_about">Chi Siamo</a></li>
-    <li><a href="../index.html#services" data-i18n="nav_services">Servizi</a></li>
-    <li><a href="../index.html#contact" data-i18n="nav_contact">Contatti</a></li>
-    <li><a href="../index.html#contact" class="nav-cta-mobile" data-i18n="nav_cta">Inizia ora</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:24px;">
-    <div class="lang-switcher" id="langSwitcher">
-      <button class="lang-btn active" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="es">ES</button>
+<nav id="mainNav" class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="Digital Peak Home">
+      <img src="../assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#about" data-i18n="nav_about">Chi Siamo</a></li>
+      <li><a href="../index.html#services" data-i18n="nav_services">Servizi</a></li>
+      <li><a href="../index.html#contact" data-i18n="nav_contact">Contatti</a></li>
+      <li><a href="../index.html#contact" class="nav-cta-mobile" data-i18n="nav_cta">Inizia ora</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-switcher" id="langSwitcher">
+        <button type="button" class="lang-btn active" data-lang="it">IT</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <a href="../index.html#contact" class="nav-cta" data-i18n="nav_cta">Inizia ora</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
     </div>
-    <a href="../index.html#contact" class="nav-cta" data-i18n="nav_cta">Inizia ora</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </button>
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="svc-hero">
-  <div class="svc-hero-bg">
-    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1600" alt="Siti & App Web">
+<header class="svc-hero">
+  <div class="container svc-hero-grid">
+    <div class="svc-hero-content">
+      <nav class="svc-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html" data-i18n="breadcrumb_home">Home</a>
+        <span class="bc-sep" aria-hidden="true">/</span>
+        <a href="../index.html#services" data-i18n="nav_services">Servizi</a>
+        <span class="bc-sep" aria-hidden="true">/</span>
+        <span class="bc-current" data-i18n="nav_s6">Siti &amp; App Web</span>
+      </nav>
+      <div class="svc-eyebrow" data-i18n="p_sw_eyebrow">006 — Siti &amp; App Web</div>
+      <h1 class="svc-title" data-i18n="p_sw_title">SITI &amp;<br><span>APP WEB</span></h1>
+      <p class="svc-subtitle" data-i18n="p_sw_subtitle">Siti B2B ad alta conversione e web application su misura, con integrazione CRM nativa. Design premium, performance ottimale.</p>
+    </div>
+    <div class="svc-hero-media">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1600" alt="Siti & App Web">
+    </div>
   </div>
-  <div class="svc-hero-content">
-    <div class="svc-eyebrow" data-i18n="p_sw_eyebrow">006 — Siti & App Web</div>
-    <h1 class="svc-title" data-i18n="p_sw_title">SITI &<br><span>APP WEB</span></h1>
-    <p class="svc-subtitle" data-i18n="p_sw_subtitle">Siti B2B ad alta conversione e web application su misura, con integrazione CRM nativa. Design premium, performance ottimale.</p>
-  </div>
-</div>
+</header>
 
 <!-- INTRO -->
-<div class="svc-intro">
-  <div class="svc-intro-grid">
+<section class="svc-intro">
+  <div class="container svc-intro-grid">
     <div class="rv-base rv-up">
       <div class="svc-intro-label" data-i18n="p_sw_intro_label">Il nostro approccio</div>
       <h2 data-i18n="p_sw_intro_h2">Costruiti per<br>Convertire</h2>
     </div>
-    <div class="rv-base rv-up" style="transition-delay: 0.2s;">
+    <div class="rv-base rv-up">
       <p data-i18n="p_sw_intro_p">Non facciamo siti vetrina. Ogni progetto parte dall'analisi del buyer journey del tuo cliente B2B: struttura, contenuti e UX sono progettati per guidare il visitatore verso l'azione. L'integrazione CRM e analytics è nativa, non aggiunta in un secondo momento. Il risultato è un sito che lavora come un membro del team commerciale.</p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- SERVICE CARDS -->
-<div class="svc-cards">
-  <div class="svc-cards-grid">
+<section class="svc-cards">
+  <div class="container svc-cards-grid">
 
-    <div class="svc-card rv-base rv-up">
-      <span class="svc-card-tag" data-i18n="tag_core">Core</span>
+    <article class="svc-card rv-base rv-up" data-tag="core">
+      <div class="svc-card-head">
+        <span class="svc-card-num">01</span>
+        <span class="svc-card-tag" data-i18n="tag_core">Core</span>
+      </div>
       <h3 data-i18n="p_sw_c1_h3">Web Design B2B</h3>
       <p data-i18n="p_sw_c1_p">Siti ad alta conversione con design premium e performance ottimale. Struttura pensata per il buyer journey B2B: dalla prima visita alla richiesta di contatto, ogni pagina ha un obiettivo chiaro.</p>
-    </div>
+    </article>
 
-    <div class="svc-card rv-base rv-up" style="transition-delay: 0.1s;">
-      <span class="svc-card-tag" data-i18n="tag_core">Core</span>
-      <h3 data-i18n="p_sw_c2_h3">Sviluppo Web App & Portali</h3>
+    <article class="svc-card rv-base rv-up" data-tag="core">
+      <div class="svc-card-head">
+        <span class="svc-card-num">02</span>
+        <span class="svc-card-tag" data-i18n="tag_core">Core</span>
+      </div>
+      <h3 data-i18n="p_sw_c2_h3">Sviluppo Web App &amp; Portali</h3>
       <p data-i18n="p_sw_c2_p">Applicazioni e portali custom costruiti sul processo commerciale del cliente. Dal portale clienti al configuratore di prodotto, sviluppiamo strumenti web che automatizzano processi e creano valore.</p>
-    </div>
+    </article>
 
-    <div class="svc-card accent-cyan rv-base rv-up" style="transition-delay: 0.2s;">
-      <span class="svc-card-tag" data-i18n="tag_cross">Trasversale</span>
-      <h3 data-i18n="p_sw_c3_h3">Integrazione CRM & Analytics</h3>
+    <article class="svc-card accent-cyan rv-base rv-up" data-tag="cross">
+      <div class="svc-card-head">
+        <span class="svc-card-num">03</span>
+        <span class="svc-card-tag" data-i18n="tag_cross">Trasversale</span>
+      </div>
+      <h3 data-i18n="p_sw_c3_h3">Integrazione CRM &amp; Analytics</h3>
       <p data-i18n="p_sw_c3_p">Collegamento nativo con CRM, analytics e strumenti di marketing dal primo giorno. Ogni lead generato dal sito entra automaticamente nel CRM con il contesto corretto: fonte, pagine visitate, comportamento.</p>
-    </div>
+    </article>
 
-    <div class="svc-card rv-base rv-up" style="transition-delay: 0.1s;">
-      <span class="svc-card-tag" data-i18n="tag_core">Core</span>
-      <h3 data-i18n="p_sw_c4_h3">Performance & Core Web Vitals</h3>
+    <article class="svc-card rv-base rv-up" data-tag="core">
+      <div class="svc-card-head">
+        <span class="svc-card-num">04</span>
+        <span class="svc-card-tag" data-i18n="tag_core">Core</span>
+      </div>
+      <h3 data-i18n="p_sw_c4_h3">Performance &amp; Core Web Vitals</h3>
       <p data-i18n="p_sw_c4_p">Ottimizzazione tecnica per velocità, SEO e Core Web Vitals. Un sito lento perde clienti: garantiamo caricamenti rapidi su ogni dispositivo e visibilità organica nei motori di ricerca.</p>
-    </div>
+    </article>
 
-    <div class="svc-card rv-base rv-up" style="transition-delay: 0.2s;">
-      <span class="svc-card-tag" data-i18n="tag_core">Core</span>
-      <h3 data-i18n="p_sw_c5_h3">Landing Page & CRO</h3>
+    <article class="svc-card rv-base rv-up" data-tag="core">
+      <div class="svc-card-head">
+        <span class="svc-card-num">05</span>
+        <span class="svc-card-tag" data-i18n="tag_core">Core</span>
+      </div>
+      <h3 data-i18n="p_sw_c5_h3">Landing Page &amp; CRO</h3>
       <p data-i18n="p_sw_c5_p">Landing page ad alta conversione per campagne paid e organiche. A/B test, heatmap e ottimizzazione continua per massimizzare il tasso di conversione su ogni touchpoint.</p>
-    </div>
+    </article>
 
-    <div class="svc-card accent-cyan rv-base rv-up" style="transition-delay: 0.3s;">
-      <span class="svc-card-tag" data-i18n="tag_cross">Trasversale</span>
+    <article class="svc-card accent-cyan rv-base rv-up" data-tag="cross">
+      <div class="svc-card-head">
+        <span class="svc-card-num">06</span>
+        <span class="svc-card-tag" data-i18n="tag_cross">Trasversale</span>
+      </div>
       <h3 data-i18n="p_sw_c6_h3">Stack Tecnico Consigliato</h3>
       <p data-i18n="p_sw_c6_p">Lavoriamo con tecnologie moderne e scalabili: Next.js / React per il frontend, Supabase per database e backend, Vercel per hosting e deployment, con CI/CD e version control su GitHub.</p>
-    </div>
+    </article>
 
   </div>
-</div>
+</section>
+
+<!-- RELATED SERVICES -->
+<section class="svc-related">
+  <div class="container">
+    <div class="svc-related-header">
+      <span class="svc-related-eye" data-i18n="svc_other_eye">Continua a esplorare</span>
+      <h2 class="svc-related-title" data-i18n="svc_other_title">Le altre aree di Digital Peak</h2>
+    </div>
+    <div class="svc-related-grid">
+      <a href="lead-generation.html" class="svc-related-link"><span class="rel-num">01</span><span class="rel-name" data-i18n="nav_s1">Lead Generation B2B</span><span class="rel-arrow">→</span></a>
+      <a href="ecommerce-cro.html" class="svc-related-link"><span class="rel-num">02</span><span class="rel-name" data-i18n="nav_s2">eCommerce B2B &amp; CRO</span><span class="rel-arrow">→</span></a>
+      <a href="agentic-ai.html" class="svc-related-link"><span class="rel-num">03</span><span class="rel-name" data-i18n="nav_s3">Agentic AI</span><span class="rel-arrow">→</span></a>
+      <a href="marketing-automation.html" class="svc-related-link"><span class="rel-num">04</span><span class="rel-name" data-i18n="nav_s4">Marketing Automation</span><span class="rel-arrow">→</span></a>
+      <a href="strategia-marketing.html" class="svc-related-link"><span class="rel-num">05</span><span class="rel-name" data-i18n="nav_s5">Marketing Strategy</span><span class="rel-arrow">→</span></a>
+    </div>
+  </div>
+</section>
 
 <!-- CTA BAND -->
-<div class="svc-cta-band">
-  <h2 data-i18n="p_sw_cta_h2">Pronto a costruire il tuo sito?</h2>
-  <p data-i18n="p_sw_cta_p">Analizziamo il tuo buyer journey e costruiamo un sito che converte. Nessun template, solo soluzioni su misura.</p>
-  <a href="../index.html#contact" data-i18n="p_sw_cta_btn">Inizia il progetto →</a>
-</div>
+<section class="svc-cta-band">
+  <div class="container svc-cta-inner">
+    <h2 data-i18n="p_sw_cta_h2">Pronto a costruire il tuo sito?</h2>
+    <p data-i18n="p_sw_cta_p">Analizziamo il tuo buyer journey e costruiamo un sito che converte. Nessun template, solo soluzioni su misura.</p>
+    <a href="../index.html#contact" class="svc-cta-btn" data-i18n="p_sw_cta_btn">Inizia il progetto →</a>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer style="background: var(--navy-2); padding: 60px; border-top: 1px solid var(--line-light);">
-  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto;">
-    <img src="../assets/img/DigitalPeak_Logo.png" alt="Digital Peak" style="height: 40px; width: auto; object-fit: contain;">
-    <div style="color: var(--gray-2); font-size: 13px;" data-i18n="footer_copy">© 2026 Digital Peak. Growth Without Limits.</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-logo" aria-label="Digital Peak">
+          <img src="../assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
+        </a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Agenzia B2B ad alto contenuto tecnologico specializzata in acquisizione, automazione, eCommerce e Agentic AI.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading" data-i18n="footer_services">Servizi</h3>
+        <ul class="footer-list">
+          <li><a href="lead-generation.html" data-i18n="nav_s1">Lead Generation B2B</a></li>
+          <li><a href="ecommerce-cro.html" data-i18n="nav_s2">eCommerce B2B &amp; CRO</a></li>
+          <li><a href="agentic-ai.html" data-i18n="nav_s3">Agentic AI</a></li>
+          <li><a href="marketing-automation.html" data-i18n="nav_s4">Marketing Automation</a></li>
+          <li><a href="strategia-marketing.html" data-i18n="nav_s5">Marketing Strategy</a></li>
+          <li><a href="siti-web.html" data-i18n="nav_s6">Siti &amp; App Web</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading" data-i18n="footer_nav">Navigazione</h3>
+        <ul class="footer-list">
+          <li><a href="../index.html#about" data-i18n="nav_about">Chi Siamo</a></li>
+          <li><a href="../index.html#services" data-i18n="nav_services">Servizi</a></li>
+          <li><a href="../index.html#contact" data-i18n="nav_contact">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" data-i18n="footer_copy">© 2026 Digital Peak. Growth Without Limits.</div>
+    </div>
   </div>
 </footer>
 
+<script src="../assets/js/d/world.js"></script>
+<script src="../assets/js/d/audio.js"></script>
+<script src="../assets/js/d/surf-game.js"></script>
+<script src="../assets/js/d/design-d.js"></script>
 <script src="../assets/js/i18n.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
 </html>
-

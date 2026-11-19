@@ -180,7 +180,24 @@ const FALLBACK_TRANSLATIONS = {
   "p_sw_cta_h2": "Pronto a costruire il tuo sito?",
   "p_sw_cta_p": "Analizziamo il tuo buyer journey e costruiamo un sito che converte. Nessun template, solo soluzioni su misura.",
   "p_sw_cta_btn": "Inizia il progetto →",
-  "meta_title_home": "Digital Peak — Growth Without Limits"
+  "meta_title_home": "Digital Peak — Growth Without Limits",
+  "hero_explore": "Esplora i servizi",
+  "hero_pillar_label": "Architettura di crescita B2B",
+  "services_eye": "<span class=\"eye-num\">003</span> Servizi",
+  "services_title": "Sei aree integrate per <span class=\"cy\">scalare</span>",
+  "services_sub": "Ogni disciplina lavora in sinergia con CRM, dati e automazione: zero silos, impatto misurabile sulla pipeline.",
+  "breadcrumb_home": "Home",
+  "svc_other_eye": "Continua a esplorare",
+  "svc_other_title": "Le altre aree di Digital Peak",
+  "footer_tagline": "Agenzia B2B ad alto contenuto tecnologico specializzata in acquisizione, automazione, eCommerce e Agentic AI.",
+  "footer_services": "Servizi",
+  "footer_nav": "Navigazione",
+  "nav_s1": "Lead Generation B2B",
+  "nav_s2": "eCommerce B2B & CRO",
+  "nav_s3": "Agentic AI",
+  "nav_s4": "Marketing Automation",
+  "nav_s5": "Marketing Strategy",
+  "nav_s6": "Siti & App Web"
 },
   en: {
   "nav_about": "About Us",
@@ -352,7 +369,24 @@ const FALLBACK_TRANSLATIONS = {
   "p_sw_cta_h2": "Ready to build a web presence that drives revenue?",
   "p_sw_cta_p": "We map your buyer journey and build an experience engineered to convert. No rigid templates, only custom architecture.",
   "p_sw_cta_btn": "Start your project →",
-  "meta_title_home": "Digital Peak — Growth Without Limits"
+  "meta_title_home": "Digital Peak — Growth Without Limits",
+  "hero_explore": "Explore services",
+  "hero_pillar_label": "B2B Growth Architecture",
+  "services_eye": "<span class=\"eye-num\">003</span> Services",
+  "services_title": "Six integrated practices to <span class=\"cy\">scale</span>",
+  "services_sub": "Every discipline works in sync with CRM, data and automation: zero silos, measurable pipeline impact.",
+  "breadcrumb_home": "Home",
+  "svc_other_eye": "Keep exploring",
+  "svc_other_title": "Other Digital Peak practices",
+  "footer_tagline": "High-tech B2B agency specializing in acquisition, automation, eCommerce, and Agentic AI.",
+  "footer_services": "Services",
+  "footer_nav": "Navigation",
+  "nav_s1": "B2B Lead Generation",
+  "nav_s2": "B2B eCommerce & CRO",
+  "nav_s3": "Agentic AI",
+  "nav_s4": "Marketing Automation",
+  "nav_s5": "Marketing Strategy",
+  "nav_s6": "Websites & Web Apps"
 },
   es: {
   "nav_about": "Quiénes Somos",
@@ -524,7 +558,24 @@ const FALLBACK_TRANSLATIONS = {
   "p_sw_cta_h2": "¿Listo para desarrollar una web que genere negocio real?",
   "p_sw_cta_p": "Analizamos el recorrido de tu comprador y construimos una solución pensada para convertir. Cero plantillas genéricas.",
   "p_sw_cta_btn": "Comienza el proyecto →",
-  "meta_title_home": "Digital Peak — Growth Without Limits"
+  "meta_title_home": "Digital Peak — Growth Without Limits",
+  "hero_explore": "Explorar servicios",
+  "hero_pillar_label": "Arquitectura de crecimiento B2B",
+  "services_eye": "<span class=\"eye-num\">003</span> Servicios",
+  "services_title": "Seis áreas integradas para <span class=\"cy\">escalar</span>",
+  "services_sub": "Cada disciplina trabaja en sinergia con CRM, datos y automatización: cero silos, impacto medible en pipeline.",
+  "breadcrumb_home": "Inicio",
+  "svc_other_eye": "Sigue explorando",
+  "svc_other_title": "Otras áreas de Digital Peak",
+  "footer_tagline": "Agencia B2B de alto contenido tecnológico especializada en captación, automatización, eCommerce y Agentic AI.",
+  "footer_services": "Servicios",
+  "footer_nav": "Navegación",
+  "nav_s1": "Lead Generation B2B",
+  "nav_s2": "eCommerce B2B & CRO",
+  "nav_s3": "Agentic AI",
+  "nav_s4": "Marketing Automation",
+  "nav_s5": "Marketing Strategy",
+  "nav_s6": "Sitios & Apps Web"
 }
 };
 
@@ -573,6 +624,10 @@ function applyTranslations(t) {
   });
 
   document.documentElement.lang = currentLang;
+
+  try {
+    window.dispatchEvent(new CustomEvent('dp:lang', { detail: { lang: currentLang, translations: t } }));
+  } catch (_) {}
 }
 
 // Switcher lingua
@@ -589,6 +644,13 @@ function bindLangButtons() {
     btn.addEventListener('click', () => switchLang(btn.dataset.lang));
   });
 }
+
+window.DPI18n = {
+  getLang: () => currentLang,
+  getTranslations: () => translations,
+  refresh: () => applyTranslations(translations),
+  switchLang
+};
 
 // Inizializzazione automatica
 (async () => {

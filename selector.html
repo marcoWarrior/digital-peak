@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Peak — Selezione Proposte Grafiche</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #F4F5F7;
+    color: #0F172A;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 48px 24px 64px;
+  }
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #CBD5E1;
+    margin-bottom: 40px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .brand img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #334155;
+    background: #E2E8F0;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .intro {
+    max-width: 760px;
+    margin-bottom: 40px;
+  }
+  .intro h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(28px, 3.6vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    margin-bottom: 14px;
+    color: #0F172A;
+  }
+  .intro p {
+    font-size: 16px;
+    color: #475569;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    padding: 32px;
+    border: 1px solid #CBD5E1;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+  }
+  .card-a {
+    background: #FFFFFF;
+    color: #0F172A;
+    border-color: #CBD5E1;
+  }
+  .card-b {
+    background: #090B12;
+    color: #F4F6FB;
+    border-color: rgba(0, 212, 255, 0.28);
+  }
+  .card-c {
+    background: #F6F2EB;
+    color: #141413;
+    border-color: rgba(20, 20, 19, 0.2);
+  }
+  .card-d {
+    background: radial-gradient(500px circle at 85% 15%, rgba(255, 42, 133, 0.24), transparent 60%),
+                radial-gradient(500px circle at 15% 85%, rgba(0, 240, 255, 0.2), transparent 60%),
+                #070312;
+    color: #F7F8FF;
+    border-color: rgba(0, 240, 255, 0.45);
+  }
+  .swatches {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(128, 128, 128, 0.25);
+  }
+  .code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.72;
+    margin-bottom: 10px;
+  }
+  .card h2 {
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .card-a h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; letter-spacing: -0.025em; }
+  .card-b h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.03em; }
+  .card-c h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 32px; }
+  .card-d h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.03em; background: linear-gradient(90deg, #00F0FF, #FF2A85, #FFB800); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .card p {
+    font-size: 15px;
+    margin-bottom: 24px;
+    opacity: 0.86;
+    flex: 1;
+  }
+  .meta {
+    font-size: 13px;
+    padding-top: 16px;
+    margin-bottom: 24px;
+    border-top: 1px solid currentColor;
+    opacity: 0.78;
+  }
+  .meta strong { display: block; margin-bottom: 4px; }
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.16s ease, transform 0.16s ease;
+  }
+  .btn:hover { opacity: 0.92; }
+  .btn:active { transform: scale(0.985); }
+  .btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .card-a .btn-main { background: #0F172A; color: #FFFFFF; }
+  .card-a .btn-sub { background: #F1F5F9; color: #0F172A; }
+  .card-b .btn-main { background: #00D4FF; color: #090B12; }
+  .card-b .btn-sub { background: #161C2E; color: #F4F6FB; border: 1px solid rgba(255,255,255,0.14); }
+  .card-c .btn-main { background: #141413; color: #F6F2EB; border-radius: 2px; }
+  .card-c .btn-sub { background: transparent; color: #141413; border: 1px solid rgba(20,20,19,0.28); border-radius: 2px; }
+  .card-d .btn-main { background: linear-gradient(90deg, #00F0FF, #FF2A85, #FFB800); color: #070312; font-weight: 700; }
+  .card-d .btn-sub { background: rgba(255, 255, 255, 0.06); color: #F7F8FF; border: 1px solid rgba(0, 240, 255, 0.35); }
+  .note {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .note code {
+    font-family: 'JetBrains Mono', monospace;
+    background: #F1F5F9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #0F172A;
+  }
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <img src="assets/img/DigitalPeak_Logo.png" alt="Digital Peak">
+      </div>
+      <span class="badge">Restyling — 4 Proposte Navigabili</span>
+    </header>
+
+    <section class="intro">
+      <h1>Confronto direzioni grafiche Digital Peak</h1>
+      <p>Ogni proposta mantiene gli stessi contenuti, tutte le 6 pagine di servizio, il sistema multilingua (IT / EN / ES) e il form contatti originale. Il parametro <code>?design=A|B|C|D</code> resta attivo durante tutta la navigazione tra homepage e pagine interne.</p>
+    </section>
+
+    <section class="grid" aria-label="Varianti grafiche disponibili">
+      <article class="card card-a">
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background:#FFFFFF"></span>
+          <span class="swatch" style="background:#0E1525"></span>
+          <span class="swatch" style="background:#2451D1"></span>
+        </div>
+        <div class="code">Variante ?design=A</div>
+        <h2>Premium Corporate</h2>
+        <p>Identità istituzionale autorevole: superfici chiare ad alta leggibilità alternate al navy profondo, griglie ordinate a 2 e 3 colonne, tipografia Plus Jakarta Sans + Inter e cobalto misurato.</p>
+        <div class="meta">
+          <strong>Ideale per</strong>
+          Comunicare solidità, affidabilità enterprise e chiarezza consulenziale B2B.
+        </div>
+        <div class="actions">
+          <a class="btn btn-main" href="index.html?design=A">Apri Homepage Versione A →</a>
+          <a class="btn btn-sub" href="pages/lead-generation.html?design=A">Apri pagina interna (Lead Gen)</a>
+        </div>
+      </article>
+
+      <article class="card card-b">
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background:#090B12"></span>
+          <span class="swatch" style="background:#00D4FF"></span>
+          <span class="swatch" style="background:#8C52FF"></span>
+        </div>
+        <div class="code">Variante ?design=B</div>
+        <h2>Modern Digital</h2>
+        <p>Architettura tech contemporanea su tela scura, header flottante command-bar, griglia Bento asimmetrica, tipografia Space Grotesk + JetBrains Mono e micro-interazioni reattive al puntatore.</p>
+        <div class="meta">
+          <strong>Ideale per</strong>
+          Esprimere innovazione tecnologica, Agentic AI, automazione e slancio digitale.
+        </div>
+        <div class="actions">
+          <a class="btn btn-main" href="index.html?design=B">Apri Homepage Versione B →</a>
+          <a class="btn btn-sub" href="pages/agentic-ai.html?design=B">Apri pagina interna (Agentic AI)</a>
+        </div>
+      </article>
+
+      <article class="card card-c">
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background:#F6F2EB"></span>
+          <span class="swatch" style="background:#141413"></span>
+          <span class="swatch" style="background:#3D2C8D"></span>
+          <span class="swatch" style="background:#9C7248"></span>
+        </div>
+        <div class="code">Variante ?design=C</div>
+        <h2>Editorial Luxury</h2>
+        <p>Impostazione editoriale d'autore su carta avorio e pietra calda, testata centrata, titoli Cormorant Garamond con corsivi espressivi, spread orizzontali alternati e chiusura in ossidiana.</p>
+        <div class="meta">
+          <strong>Ideale per</strong>
+          Posizionamento distintivo di fascia alta, consulenza direzionale e identità memorabile.
+        </div>
+        <div class="actions">
+          <a class="btn btn-main" href="index.html?design=C">Apri Homepage Versione C →</a>
+          <a class="btn btn-sub" href="pages/strategia-marketing.html?design=C">Apri pagina interna (Strategy)</a>
+        </div>
+      </article>
+
+      <article class="card card-d">
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background:#070312"></span>
+          <span class="swatch" style="background:#00F0FF"></span>
+          <span class="swatch" style="background:#FF2A85"></span>
+          <span class="swatch" style="background:#FFB800"></span>
+        </div>
+        <div class="code">Variante ?design=D · Esperienza WebGL2</div>
+        <h2>Peak Run — Neon-Sunset Surf</h2>
+        <p>Esperienza 3D esplorabile fuori dagli schemi (ispirata ad Active Theory, Igloo Inc. e Chartogne-Taillet): navigazione spaziale sulle onde WebGL2, architetture raymarched sospese sull'acqua, audio synth-sunset procedurale e micro-interazione giocabile Peak Run fino alla vetta.</p>
+        <div class="meta">
+          <strong>Ideale per</strong>
+          Stupire con un'esperienza immersiva da creative studio internazionale e regia da trailer ad alto impatto.
+        </div>
+        <div class="actions">
+          <a class="btn btn-main" href="index.html?design=D">Apri Esperienza 3D Versione D →</a>
+          <a class="btn btn-sub" href="pages/agentic-ai.html?design=D">Apri Dossier 3D (Agentic AI)</a>
+        </div>
+      </article>
+    </section>
+
+    <aside class="note">
+      Puoi anche cambiare variante in qualunque momento direttamente dalla barra degli indirizzi del browser sostituendo <code>?design=A</code>, <code>?design=B</code>, <code>?design=C</code> oppure <code>?design=D</code> su qualsiasi pagina del sito.
+    </aside>
+  </main>
+</body>
+</html>

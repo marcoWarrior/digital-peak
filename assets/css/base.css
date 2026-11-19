@@ -1,0 +1,174 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   base.css — Digital Peak
+   Reset, strutturazione base, accessibilità, reveal e stati form condivisi.
+   Tutti gli stili tematici e di layout vivono in design-a.css / b / c.
+   ───────────────────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+section[id],
+header[id],
+footer[id] {
+  scroll-margin-top: 96px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* Impedisce espansione oltre la colonna su grid e flex */
+.hero-copy,
+.hero-visual,
+.service-card,
+.service-body,
+.service-media,
+.method-col,
+.ct-copy,
+.ct-form-wrap,
+.svc-hero-content,
+.svc-hero-media,
+.svc-card {
+  min-width: 0;
+}
+
+/* Controlli menu mobile nascosti di default su desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.nav-toggle .bar {
+  width: 22px;
+  height: 2px;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+}
+
+.nav-toggle.open .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-overlay {
+  display: none;
+}
+
+.nav-cta-mobile {
+  display: none;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.rv-base {
+  opacity: 0;
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rv-up {
+  transform: translateY(16px);
+}
+
+.rv-base.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rv-trigger .rv-child {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rv-trigger .rv-child:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.rv-trigger .rv-child:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.rv-trigger.in .rv-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── FEEDBACK FORM CONTATTI ─── */
+.form-feedback {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .rv-base,
+  .rv-trigger .rv-child {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

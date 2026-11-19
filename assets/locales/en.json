@@ -168,5 +168,22 @@
   "p_sw_cta_h2": "Ready to build a web presence that drives revenue?",
   "p_sw_cta_p": "We map your buyer journey and build an experience engineered to convert. No rigid templates, only custom architecture.",
   "p_sw_cta_btn": "Start your project →",
-  "meta_title_home": "Digital Peak — Growth Without Limits"
+  "meta_title_home": "Digital Peak — Growth Without Limits",
+  "hero_explore": "Explore services",
+  "hero_pillar_label": "B2B Growth Architecture",
+  "services_eye": "<span class=\"eye-num\">003</span> Services",
+  "services_title": "Six integrated practices to <span class=\"cy\">scale</span>",
+  "services_sub": "Every discipline works in sync with CRM, data and automation: zero silos, measurable pipeline impact.",
+  "breadcrumb_home": "Home",
+  "svc_other_eye": "Keep exploring",
+  "svc_other_title": "Other Digital Peak practices",
+  "footer_tagline": "High-tech B2B agency specializing in acquisition, automation, eCommerce, and Agentic AI.",
+  "footer_services": "Services",
+  "footer_nav": "Navigation",
+  "nav_s1": "B2B Lead Generation",
+  "nav_s2": "B2B eCommerce & CRO",
+  "nav_s3": "Agentic AI",
+  "nav_s4": "Marketing Automation",
+  "nav_s5": "Marketing Strategy",
+  "nav_s6": "Websites & Web Apps"
 }

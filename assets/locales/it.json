@@ -168,5 +168,22 @@
   "p_sw_cta_h2": "Pronto a costruire il tuo sito?",
   "p_sw_cta_p": "Analizziamo il tuo buyer journey e costruiamo un sito che converte. Nessun template, solo soluzioni su misura.",
   "p_sw_cta_btn": "Inizia il progetto →",
-  "meta_title_home": "Digital Peak — Growth Without Limits"
+  "meta_title_home": "Digital Peak — Growth Without Limits",
+  "hero_explore": "Esplora i servizi",
+  "hero_pillar_label": "Architettura di crescita B2B",
+  "services_eye": "<span class=\"eye-num\">003</span> Servizi",
+  "services_title": "Sei aree integrate per <span class=\"cy\">scalare</span>",
+  "services_sub": "Ogni disciplina lavora in sinergia con CRM, dati e automazione: zero silos, impatto misurabile sulla pipeline.",
+  "breadcrumb_home": "Home",
+  "svc_other_eye": "Continua a esplorare",
+  "svc_other_title": "Le altre aree di Digital Peak",
+  "footer_tagline": "Agenzia B2B ad alto contenuto tecnologico specializzata in acquisizione, automazione, eCommerce e Agentic AI.",
+  "footer_services": "Servizi",
+  "footer_nav": "Navigazione",
+  "nav_s1": "Lead Generation B2B",
+  "nav_s2": "eCommerce B2B & CRO",
+  "nav_s3": "Agentic AI",
+  "nav_s4": "Marketing Automation",
+  "nav_s5": "Marketing Strategy",
+  "nav_s6": "Siti & App Web"
 }
